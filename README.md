@@ -15,17 +15,20 @@
 
 ### 공통 사용  
 
+
 HTML  
 
 Sass  
 
 Javascript  
 
+BEM방식
+
 VueJs   
 
 webpack  
 
-Spoqa Han Sans  
+글꼴: Spoqa Han Sans  
 
 ---  
 
