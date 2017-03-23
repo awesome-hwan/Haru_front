@@ -2,38 +2,33 @@
 
 ### 컨셉  
 
-```
-우리가 무심코 지나가는 하루.. 다시 오지않는 하루.. 그날은 기억하며..  
-The day that we pass by unintentionally .. the day when we do not come again .. I remember that day ..  
-```  
-
 하루에 한번쓰는 제약 다이어리 형식   
 
 ---  
 
 ### MVP  
-하루한장, 사진첩(저장,수정,삭제,보여주기 )+ 로그인+ 감정에 따라서 모아서 보여주는 정렬기능,  제한 됬을 때 ....
+하루한장  
+사진첩(저장,수정,삭제,보여주기 )  
+로그인  
 
+---  
+
+### 공통 사용  
+
+HTML  
+
+Sass  
+
+Javascript  
+
+VueJs   
+
+webpack  
+
+Spoqa Han Sans  
 
 ---  
 
-### 기능  
-
-
-- 사용자 설정, 기본시간에 푸시기능.  
-
-- 날짜 배열 타고 들어가서 바둑판식으로 보여주자.   
-
-- 사진에 호버됬을 반투명상태로 날짜와 감정을 나타냄.  
-
-- 개인 사진 첩, 추후에 공유기능을 추가하려 한다.  
-
-- Mac 페이지 시리 블러->>> 확대. (제외)
-
-- 사진작게 모아서 이미지 만들어서 보여주기.(제외)  
-![default](https://cloud.githubusercontent.com/assets/25549306/23901645/848ed6d2-0901-11e7-8cfd-0985573abe55.jpg)  
-
----  
 
 ### 화면 구상  
 
@@ -41,14 +36,21 @@ The day that we pass by unintentionally .. the day when we do not come again .. 
 
 ![unadjustednonraw_thumb_1](https://cloud.githubusercontent.com/assets/25549306/24069107/55c4a9d2-0be3-11e7-812c-a6eecd4c2afe.jpg)
 
-## 3월 15일 수요일   
+---
+### 기능  
 
-- 감정별 보기  
-- 사진은 사용자가 선택해서 바둑판식, 인스타식 보여주기.
-(목록보기, 모아보기, 감정별 보기(기쁨, 슬픔, 짜증, 분노, 그럭저럭))      
-- 데이터를 쌓아놓을 서버에 대해서 알아보기.  
+- 사용자 설정, 기본시간에 푸시기능. (배재)  
 
-와이어 프레임 완성, 아키텍처 작성,
+- 날짜 배열 타고 들어가서 바둑판식으로 보여주자.   
+
+- 사진에 호버됬을 반투명상태로 날짜와 감정을 나타냄.  
+
+- 개인 사진 첩, 추후에 공유기능을 추가하려 한다.  
+
+- Mac 페이지 시리 블러->>> 확대. (제외)  
+
+- 사진작게 모아서 이미지 만들어서 보여주기.(제외)  
+![default](https://cloud.githubusercontent.com/assets/25549306/23901645/848ed6d2-0901-11e7-8cfd-0985573abe55.jpg)  
 
 ---  
 
