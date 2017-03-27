@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+a {
+  color: black;
+}
+
+#login__input-email, #login__input-password, .login__button {
+  width: 400px;
+  height: 40px;
+  background: white;
+  margin-top: 15px;
+}
+
+.login {
+  width: 470px;
+  margin: 0 auto;
+}
+
+.hidden {
+  position: absolute;
+  top: -9999px;
+}
+
+.login__label-email, .login__label-password {
+  display: block;
+  margin-top: 15px;
+}
+
+.login__box {
+  position: relative;
+  box-sizing: border-box;
+  width: 470px;
+  height: 350px;
+  padding: 20px;
+}
+
+.login__fieldset {
+  border: 0;
+}
+
+.login__logo img {
+  width: 64px;
+  height: 64px;
+}
+
+.login__button {
+  margin-top: 40px;
+  border: 0;
+  background: black;
+  color: white;
+}
+
+.login__id-pw-find {
+  position: absolute;
+  top: 135px;
+  right: 30px;
+}
+
+.newuser__box {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.newuser__link {
+  line-height: 51px;
+}
