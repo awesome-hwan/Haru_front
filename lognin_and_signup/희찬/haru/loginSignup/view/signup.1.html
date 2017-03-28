@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/haru.signup.1.css">
+  <title>Sign-up</title>
+</head>
+<body>
+  <section class="signup">
+    <h1 class="signup__logo"><img src="../img/logo.png" alt="" class="signup__logo-img"></h1>
+    <h2 class="signup__title">하루한장 로그인</h2>
+    <div class="signup__box">
+      <form action="javascript:alert('회원님 반갑습니다');" class="signup__form" id="signup__form">
+        <fieldset class="signup__filedset">
+            <legend class="signup__legend">하루 한장 log in form </legend>
+            <label class="signup__label-email" for="user-id">이메일</label>
+            <input type="email" class="signup__input-email" id="user-id" placeholder="E-mail" required>
+            <label class="signup__label-password" for="user-pw">비밀번호</label>
+            <input type="password" class="login-password" id="user-pw" placeholder="비밀번호" minlength="8" required>
+            <label class="signup__label-password-confirm" for="user-pw">비밀번호</label>
+            <input type="password" class="signup-password" id="user-pw" placeholder="비밀번호 확인" minlength="8" required>
+            <button class="login__button" type="submit">회원가입</button>
+          </fieldset>
+      </form>
+      <a href="#" class="login__id-pw-find">아이디/비밀번호 찾기</a>
+      </div>
+      <div class="newuser__box">
+      <p class="newuser__text">아이디가 없으신가요?</p>
+      <a href="#" class="newuser__link">계정만들러 가기</a>
+      </div>
+    </section>
+</body>
+</html>
