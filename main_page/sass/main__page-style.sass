@@ -1,0 +1,114 @@
+@charset 'utf-8'
+
+// 975px >> 61rem
+.wrapper
+  width: 61rem
+  margin: 0 auto
+%main__years-flex
+  margin-top: 2rem
+  display: flex
+  height: 4rem
+
+%main__years-center
+  width: 15.234275rem
+  text-align: center
+  font-size: 2rem
+  line-height: 4rem
+  background: blue
+  color: white
+
+%main__emotions-setting
+  // width: 16.5625rem
+  // height: 6rem
+  margin-left: 2.66rem
+  line-height: 6rem
+  margin-bottom: 2rem
+  background: red
+
+%main__emotions-background
+  background-image: url(../images/emotion.png)
+  background-repeat: no-repeat
+  background-size: 40rem
+  width: 8rem
+  height: 8rem
+  margin-left: 3.5rem
+  margin-top: 2rem
+  //감정의 글씨를 삭제하기위해 overflow: hidden
+  overflow: hidden
+
+//######################### header area #########################
+.header
+  display: flex
+  // background: red
+  justify-content: space-between
+  // width: 61rem
+  // margin: 0 auto
+  & .header__logo
+      width: 4rem
+      height: 4rem
+      overflow: hidden
+      & img
+        width: 4rem
+        height: 4rem
+  & .header__logout
+    line-height: 4rem
+    letter-spacing: 0.02rem
+
+.main
+  margin: 0 auto
+.main__years
+  @extend %main__years-flex
+  & .main__years-heading
+    @extend %main__years-center
+  & .main__years-list
+    @extend %main__years-center
+    margin-left: 1.875rem
+
+.main__emotions
+  margin-top: 2rem
+  display: flex
+  height: 4rem
+  flex-wrap: wrap
+  // overflow: hidden
+  & .main__emotions-heading
+    width: 61rem
+    @extend %main__emotions-setting
+    margin: 0 auto
+    text-align: center
+  & .main__emotions-happy
+    @extend %main__emotions-background
+    @extend %main__emotions-setting
+    background-position: -16rem 0
+  & .main__emotions-sad
+    @extend %main__emotions-background
+    @extend %main__emotions-setting
+    background-position: 0 0
+  & .main__emotions-anger
+    @extend %main__emotions-background
+    @extend %main__emotions-setting
+    background-position: -8rem 0
+  & .main__emotions-fear
+    @extend %main__emotions-background
+    @extend %main__emotions-setting
+    background-position: -24rem 0
+  & .main__emotions-disgust
+    @extend %main__emotions-background
+    @extend %main__emotions-setting
+    background-position: -32rem 0
+  // 감정상태 텍스트를 가리기위해 사용
+  a
+    text-indent: 10rem
+
+.main__contents
+  margin-top: 15rem
+  width: 61rem
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  padding: 0
+  & img
+    width: 19.0625rem
+    height: 19.0625rem
+
+  & h1, p
+    opacity: 0
