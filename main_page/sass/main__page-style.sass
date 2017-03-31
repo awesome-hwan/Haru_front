@@ -1,91 +1,74 @@
 @charset 'utf-8'
 
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css)
+@import 'main_page-modules', 'main_page-function', 'setting.normalize'
 a
   color: black
 
-// 975px >> 61rem
 .wrapper
-  width: 61rem
-  margin: 0 auto
+  +width-center-auto(rem(975px))
 %main__years-flex
-  margin-top: 2rem
+  margin-top: rem(32px)
+  height: rem(64px)
   display: flex
-  height: 4rem
 
 %main__years-center
-  width: 10rem
-  text-align: center
-  margin: 0 auto
-  font-size: 2rem
-  line-height: 4rem
-  // background: #3B8EDE
-  // color: white
-
+  +width-center-auto(rem(160px))
+  font-size: rem(32px)
+  line-height: rem(64px)
 %main__emotions-setting
-  // width: 16.5625rem
-  // height: 6rem
-  margin-left: 2.66rem
-  line-height: 6rem
-  margin-bottom: 2rem
-  // background: #3B8EDE
+  margin-left: rem(43px)
+  margin-bottom: rem(32px)
+  line-height: rem(96px)
 
 %main__emotions-background
   background-image: url(../images/emotion.png)
   background-repeat: no-repeat
-  background-size: 40rem
-  width: 8rem
-  height: 8rem
-  margin-left: 3.5rem
-  margin-top: 2rem
-  //감정의 글씨를 삭제하기위해 overflow: hidden
+  background-size: rem(640px)
+  margin-left: rem(56px)
+  margin-top: rem(32px)
   overflow: hidden
+  +square(8rem)
+//감정의 글씨를 삭제하기위해 overflow: hidden
 //#########################
 //######################### header area #########################
+//#########################
 .header
   display: flex
-  // background: red
   justify-content: space-between
-  // width: 61rem
-  // margin: 0 auto
   & .header__logo
-      width: 4rem
-      height: 4rem
+      +square(rem(64px))
       overflow: hidden
       & img
-        width: 4rem
-        height: 4rem
+        +square(rem(64px))
   & .header__logout
-    line-height: 4rem
+    line-height: rem(64px)
     letter-spacing: 0.02rem
-
+    +transition-ease
+    &:hover
+      +scale-size(1.5)
 .main
-  width: 61rem
-  margin: 0 auto
-  // & h1
-  //   color: white
+  +width-center-auto(rem(975px))
 .main__years
   @extend %main__years-flex
-  // flex-wrap: wrap
   & .main__years-heading
-    // background: red
     @extend %main__years-center
 
   & .main__years-list
-    // background: red
     @extend %main__years-center
-    margin-left: 1.875rem
-
+    +transition-ease
+    margin-left: rem(30px)
+    &:hover
+      +scale-size
 .main__emotions
-  margin-top: 2rem
+  margin-top: rem(32px)
+  height: rem(64px)
   display: flex
-  height: 4rem
   flex-wrap: wrap
-  // overflow: hidden
   & .main__emotions-heading
-    width: 61rem
+    +width-center-auto(rem(975px))
     @extend %main__emotions-setting
-    margin: 0 auto
-    text-align: center
+
   & .main__emotions-happy
     @extend %main__emotions-background
     @extend %main__emotions-setting
@@ -108,51 +91,10 @@ a
     background-position: -32rem 0
   // 감정상태 텍스트를 가리기위해 사용
   a
-    text-indent: 10rem
-
-//######################### main-start area #########################
-// %main__contents-size
-//   width: 19.0625rem
-//   padding-bottom: 19.0625rem
-//
-//
-// .main__contents
-//   margin-top: 15rem
-//   width: 61rem
-//   display: flex
-//   flex-wrap: wrap
-//   justify-content: space-between
-//   padding: 0
-//   position: relative
-//   & img
-//     margin-top: 1.875rem
-//     position: absolute
-//     @extend %main__contents-size
-//   // & [class*="-text__modules"]
-//   //   position: relative
-//     // background: red
-//
-//
-//   & [class*="-heading"]
-//     @extend %main__contents-size
-//     // position: absolute
-//     opacity: 0
-//     overflow: hidden
-//
-//   &:hover [class*="-heading"]
-//     opacity: 1
-//     // position: absolute
-//     // top: 10rem
-//     background: rgba(51, 223, 223, 0.56)
-//     left: 0
-//     bottom: 0
-//     right: 0
-//     z-index: 100
-
-//######################### main-end area #########################
+    text-indent: rem(160px)
 //#########################
-//######################### new main-start area #########################
-
+//######################### main-start area #########################
+//#########################
 %main__img_h1-position
   position: absolute
   top: 0
@@ -161,35 +103,36 @@ a
   top: 0
   // 정사각형 비율을 유지하기 위해 width, padding-bottom을 같게 함
 %main__contents-size
-  width: 19.0625rem
-  padding-bottom: 19.0625rem
-  height: 0
+  +main__contents-size(rem(305px))
 
 .main__contents
   display: flex
   flex-wrap: wrap
+  justify-content: space-between
   padding: 0
   position: relative
-  margin-top: 15rem
-  justify-content: space-between
-
+  margin-top: 19rem
+  cursor: pointer
   & li
     @extend %main__contents-size
     position: relative
-    margin-bottom: 1.875rem
+    margin-bottom: rem(30px)
+    overflow: hidden
+    &:hover img
+      +scale-size
     & img
       @extend %main__img_h1-position
       max-width: 100%
       min-height: 100%
+      +transition-ease
     & h1
       @extend %main__img_h1-position
-      width: 100%
-      height: auto
+      +square(100%)
       z-index: 100
       display: flex
       align-items: center
       opacity: 0
-      transition: all 0.3s ease
+      +transition-ease
     &:hover h1
       opacity: 1
       align-items: center
@@ -204,42 +147,30 @@ a
   border-radius: 7.5rem
   color: #3B8EDE
   background: white
-  width: 7.5rem
-  height: 7.5rem
-  margin: 0 auto
+  +square(rem(120px))
+  +width-center-auto(120px)
   cursor: pointer
 
 .main__button-lodamore, .main__button-textadd
   @extend %main__button-form
+.main__button-lodamore
+  margin-top: rem(64px)
 .main__button-textadd
   position: fixed
   bottom: 1.5rem
   right: 1.5rem
   z-index: 200
-
-//######################### new main-end area #########################
+//#########################  main-end area #########################
 //#########################
 //######################### footer area #########################
-// %footer__clear-fix
-//   display: block
-//   content: ''
-//   clear: both
 
 .footer
   display: flex
-  margin-top: 2rem
   justify-content: space-between
   flex-wrap: wrap
-  & a
-    margin-left: 1rem
+  margin-top: rem(96px)
   & .footer__haru-copyright
-    line-height: 1.5rem
-
-
-  // & a
-  //   margin-left: 1rem
-    // &::after
-    //   @extend %footer__clear-fix
+    line-height: rem(24px)
 
 //######################### footer area #########################
 //#########################
@@ -247,59 +178,45 @@ a
 //#########################
 //######################### header area #########################
 @media screen and (max-width: 920px)
-  //1024
+
   .wrapper
-    width: 100%
-    margin: 0
+    +width-center-auto(100%)
   .header
     width: 100%
-    // margin: 0 auto
     justify-content: space-around
   .main
     width: 100%
-
   .main__years
     width: 100%
-    display: flex
     flex-wrap: wrap
     justify-content: space-between
-    // margin: 0 auto
 
     & .main__years-heading
-      // background: blue
-      width: 50%
+      +width-center-auto(50%)
     & .main__years-list
-      margin: 0 auto
-      // margin-top: 2rem
-      width: 50%
-
+      +width-center-auto(50%)
   .main__contents
-    margin-top: 28rem
+    margin-top: rem(448px)
     justify-content: space-around
-
   .footer
     width: 100%
     justify-content: space-around
-
     & .footer__haru-copyright
-      width: 100%
-      margin-top: 4rem
+      +width-center-auto(100%)
+      margin-top: rem(64px)
       display: block
-      text-align: center
 @media screen and (max-width: 551px)
   //중간에 감정이 하나 내려와서 설정
   .main__contents
-    margin-top: 40rem
+    margin-top: rem(640px)
     justify-content: space-around
   .main__emotions
-    // margin: 0 auto
     justify-content: space-around
-    margin-right: 4rem
+    margin-right: rem(64px)
   .main__emotions-heading
-    padding-left: 4rem
-    // background: blue
+    padding-left: rem(64px)
 
-@media screen and (max-width: 450px)
+@media screen and (max-width: 432px)
   // 모바일 사이즈 375px 로 잡아도됨
   .main__contents
-    margin-top: 40rem
+    margin-top: rem(1024px)
