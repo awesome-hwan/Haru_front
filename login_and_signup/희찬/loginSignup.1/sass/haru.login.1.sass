@@ -1,0 +1,99 @@
+@import 'setting.normalize'
+@import 'login.signup.color.size.sass'
+@import 'haru.login.signup.mixin.sass'
+@import 'login.signup.common.style.sass'
+
+//wrapper
+
+//total-box 로그인 /회원가입 공통스타일 적용
+
+.login__image
+  width: $login__image-width
+  height: $login__image-height
+  background: url("../img/login-img.png") no-repeat
+
+//
+.login__box
+  width: $login__box_width
+  height: $login__box_height
+  background: $login__box_color
+  border-radius: $login__box_border_radius
+  margin-bottom: 10px
+  position: relative
+
+
+
+    //로고랑 타이틀 가운데 정렬
+.login__title, .login__logo
+  text-align: center
+  margin-bottom: 16px
+
+//폼영역
+//폼 공통 스타일 적용
+
+//라벨이랑 레전드 숨김
+
+// .login__legend, .login__label-password, .login__label-email
+//   @extend %hidden
+
+//
+
+// .login__input-email, .login__input-password
+//   @extend %input_style
+
+.login__input-password
+  margin-bottom: 10px
+
+// .login__button
+//   @extend %input_style
+//   height: 30px
+//   background: transparent
+//   border: 0
+//   background: $login__button_color
+//   color: #fff
+//   margin-bottom: 10px
+
+//라인 또는 공통스타일
+
+.login__button-facebook
+  background: transparent
+  border: 0
+  width: $input_width
+  display: flex
+  justify-content: center
+  align-items: center
+
+// facebook icon webfont로 같이 적용하고, 회원가입에서  color만 바꾸는 쪽으로 수정 할 것
+.fb__icon
+  background: url("../img/fb-icon.png") no-repeat
+  background-size: 100%
+  display: inline-block
+  width: 18px
+  height: 18px
+  background-position: center
+
+.login__facebook
+  color: #385185
+  font-size: 16px
+
+.login__password-find
+  position: absolute
+  right: 50px
+  top: 134px
+  font-size: 14px
+  color: #003569
+
+//유저박스 공통 스타일 적용
+// .newuser__box
+
+
+
+// .download__app
+//   width: $login__box_width
+//   margin-top: 10px
+
+// .download__ios,.download__android
+//   @extend %download_button_style
+
+
+//푸터 공통 스타일 적용
