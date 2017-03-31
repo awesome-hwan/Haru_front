@@ -1,0 +1,21 @@
+=scale-size( $scale-size : 1.2)
+  transform: scale( $scale-size )
+
+=transition-ease($second: 0.4s, $motion: ease)
+  transition: all $second $motion
+
+=width-center-auto($width)
+  width: $width
+  margin: 0 auto
+  text-align: center
+
+=square($width, $height: $width)
+  width: $width
+  height: $height
+
+=main__contents-size( $width , $padding-bottom: $width)
+  width: $width
+  padding-bottom: $padding-bottom
+  // width: 19.0625rem
+  // padding-bottom: 19.0625rem
+  height: 0
