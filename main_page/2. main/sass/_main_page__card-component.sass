@@ -1,0 +1,52 @@
+
+// main__page-card color-list
+
+$twilight: rgb(248, 167, 36)
+$lips    : rgb(255, 111, 66)
+$angry   : rgb(229, 57,  53)
+$hotpink : rgb(235, 63, 121)
+$wood    : rgb(140, 109, 98)
+$nobility: rgb(125, 86, 193)
+$sense   : rgb(119, 143,155)
+$moden   : rgb(104, 109, 98)
+$jandy   : rgb(103, 158, 55)
+$sea     : rgb(91, 106, 191)
+$darken  : rgb(65,  65,  65)
+$sad     : rgb(29, 135, 228)
+$sandle  : rgb(0 , 171, 192)
+
+
+
+
+= color-random( $color: $moden )
+  background: $color
+
+.main__page-card
+  display: block
+  +square(rem(305px))
+  //google은 a 태크에 배경색을 입혔는데 나타나질 않는다.
+  //display: block 으로 해결
+  +color-random
+
+  & .main__page-card__header
+    overflow: hidden
+    +main__contents-size(rem(305px))
+    & .main__page-card__header-img
+      max-width: 100%
+      min-height: 100%
+
+  & .main__page-card__body
+    padding: rem(10px)
+    color: white
+    +main__contents-size(rem(305px))
+    & .main__page-card__body-profile
+      position: relative
+      height: rem(24px)
+      margin-top: rem(-30px)
+      margin-bottom: rem(10px)
+      // background: red
+      // z-index: 100
+      & .main__page-card__body-profile-img
+        +square(rem(40px))
+        border-radius: 50%
+        border: 1px solid white
