@@ -80,26 +80,40 @@ a
     @extend %main__emotions-setting
     &::before
       +virtual-before($twilight)
-
+      +transition-ease
+    &:hover::before
+      height: 3rem
   & .main__emotions-sad
     @extend %main__emotions-setting
     &::before
       +virtual-before($sad)
+      +transition-ease
+    &:hover::before
+      height: 0rem
   & .main__emotions-anger
     // @extend %main__emotions-background
     @extend %main__emotions-setting
     &::before
       +virtual-before($angry)
+      +transition-ease
+    &:hover::before
+      height: 1.5rem
   & .main__emotions-fear
     // @extend %main__emotions-background
     @extend %main__emotions-setting
     &::before
       +virtual-before($moden)
+      +transition-ease
+    &:hover::before
+      height: 2rem
   & .main__emotions-disgust
     // @extend %main__emotions-background
     @extend %main__emotions-setting
     &::before
       +virtual-before($jandy)
+      +transition-ease
+    &:hover::before
+      height: 2rem
   // 감정상태 텍스트를 가리기위해 사용
   // a
   //   text-indent: rem(160px)
@@ -127,6 +141,7 @@ a
   text-align: left
   & .main__page-card
     margin-bottom: rem(30px)
+
     &:nth-child(1)
       +color-random($moden)
     &:nth-child(2)
@@ -145,7 +160,10 @@ a
       +color-random($sense)
     &:nth-child(9)
       +color-random($twilight)
-
+    & .main__page-card__header-img
+      +transition-ease
+    &:hover .main__page-card__header-img
+      +scale-size
   // // main__contents에 대한 입력값을 막았다.
   // & a
   // //   // @extend %main__contents-size
@@ -155,27 +173,27 @@ a
   // //   // height: 0
   // //   margin-bottom: rem(30px)
   // //   overflow: hidden
-  //
-  //   &:hover img
-  //     +scale-size
-  //   & img
-  //     @extend %main__img_h1-position
-  //     max-width: 100%
-  //     min-height: 100%
-  //     +transition-ease
-  //   & h2
-  //     @extend %main__img_h1-position
-  //     +square(100%)
-  //     z-index: 100
-  //     display: flex
-  //     align-items: center
-  //     opacity: 0
-  //     +transition-ease
-  //   &:hover h2
-  //     opacity: 1
-  //     align-items: center
-  //     background: rgba(#3B8EDE, 0.75)
-  //     color: white
+
+    // &:hover img
+    //   +scale-size
+    // & img
+    //   @extend %main__img_h1-position
+    //   max-width: 100%
+    //   min-height: 100%
+    //   +transition-ease
+    // & h2
+    //   @extend %main__img_h1-position
+    //   +square(100%)
+    //   z-index: 100
+    //   display: flex
+    //   align-items: center
+    //   opacity: 0
+    //   +transition-ease
+    // &:hover h2
+    //   opacity: 1
+    //   align-items: center
+    //   background: rgba(#3B8EDE, 0.75)
+    //   color: white
 
 .main__button-position
   text-align: center
