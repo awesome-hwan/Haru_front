@@ -4,7 +4,7 @@
   <!-- ######################### header area ######################### -->
   <header class="header">
     <h1 class="header__logo"><img src="../../images/main/HaruLogoWithName_Black.svg" alt="하루한장 메인로고">하루한장 메인로고</h1>
-    <a href="#" class="header__logout">Log out</a>
+    <a  href="#" class="header__logout" @click="gotoLogin">Log out</a>
   </header>
 
   <!-- ######################### main area ######################### -->
@@ -176,8 +176,7 @@
     <div class="main__button-position">
       <button class="main__button-lodamore">더보기 &#xE001;</button>
     </div>
-    <button class="main__button-textadd"
-            onclick="sendRequest()">글쓰기 &#xE001;</button>
+    <button class="main__button-textadd" @click="gotoWrite">글쓰기 &#xE001;</button>
   </main>
   <!-- ######################### footer area ######################### -->
   <footer class="footer">
@@ -208,6 +207,14 @@ export default {
   data: function data() {
     return {
 
+    }
+  },
+  methods: {
+    gotoLogin(){
+      this.$router.push('/login')
+    },
+    gotoWrite(){
+      this.$router.push('/writePage')
     }
   }
 }

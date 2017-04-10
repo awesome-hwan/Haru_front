@@ -28,8 +28,8 @@
                 <input type="password" class="signup__input-password" id="user-pw" placeholder="비밀번호" minlength="8" required v-model="user_info.newUser_password">
                 <input type="password" class="signup__input-passwordConfirm" id="confirm-userPw" @keyup="validatePassword" placeholder="비밀번호확인" minlength="8" required v-model="user_info.newUser_passwordConfirm">
                 <label class="signup__label-username" for="username">사용자이름</label>
-                <router-link tag="button" to = "/mainpage" active-class="current-page" class="signup__button"  @click="submit">가입</router-link>
-                <!-- <button class="signup__button" type="submit" @click="submit">가입</button> -->
+                <!-- <router-link tag="button" to = "/mainpage" active-class="current-page" class="signup__button"  @click="submit">가입</router-link> -->
+                <button class="signup__button" type="submit" @click="submit">가입</button>
               </fieldset>
               <p class="signup__article">가입하면 하루한장의 약관 및 개인정보처리방침에 동의하게 됩니다.</p>
             </form>
@@ -37,7 +37,7 @@
             <div class="user__box">
               <p class="user__text">계정이 있으신가요?</p>
               <!-- <router-link to = "/login" active-class="current-page" class="goto-other-page">로그인</router-link> -->
-              <!-- <a href="#" class="user_login">로그인</a> -->
+              <a href="#" class="user_login" @click="gotoLogin">로그인</a>
             </div>
           <div class="download__app">
             <p class="downlaod__text">앱을 다운로드 하세요</p>
@@ -77,6 +77,7 @@ let user_info={
   newUser_userName : '',
   newUser_password : '',
   newUser_passwordConfirm : '',
+  validation: false
 };
 
 export default {
@@ -99,20 +100,39 @@ export default {
       var confirm_password = document.getElementById("confirm-userPw");
       if(password.value !== confirm_password.value) {
        confirm_password.setCustomValidity("비밀번호가 맞지 않습니다.")
+       this.user_info.validation = false;
+      //  console.log("validation",this.user_info.validation);
       } else {
         confirm_password.setCustomValidity('');
+        this.user_info.validation = true;
+        // console.log("validation",this.user_info.validation);
+
       }
     },
     submit(){
+      if(this.user_info.validation===true){
       this.$http.post('https://haru-logintest.firebaseio.com/haruUserList.json',this.user_info)
-                .then(function(response){
-                  console.log(response);
+                .then(response => console.log(response))
+                .catch(error => console.error(error.message))
 
-                })
-                .catch(function(error){
-                  console.error(error.message);
-                })
 
+                // 페치 하면 다 가지고 온다 필요한 부분만 가지고 오도록
+                //
+                //
+                // 이 부분 에러남
+                // .then(this.$http.get('https://haru-logintest.firebaseio.com/haruUserList.json'))
+                // .then(response => console.log(response.json()))
+                // .catch(error => console.error(error.message))
+
+
+                .then(this.$router.push('/mainpage'))
+              }
+
+                //정보를 보내고 서버로부터도 받은 다음 메인page로 보내줘야 되는데 이 부분을 어떻게 해야 되는지 모르겠다.
+
+  },
+    gotoLogin(){
+      this.$router.push('/login')
     }
   }
 }

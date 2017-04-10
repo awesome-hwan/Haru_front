@@ -22,7 +22,7 @@
                   <input type="email" class="login__input-email" id="user-id" placeholder="E-mail" required>
                   <label class="login__label-password" for="user-pw">비밀번호</label>
                   <input type="password" class="login__input-password" id="user-pw" placeholder="password" minlength="8" required>
-                  <button class="login__button" type="submit">로그인</button>
+                  <button class="login__button" type="submit" @click="isUser">로그인</button>
                   <div class="line__or">
                     <span class="login__line"></span><p class="or">또는</p><span class="login__line"></span>
                   </div>
@@ -37,8 +37,8 @@
           </div>
               <div class="newuser__box">
                 <p class="newuser__text">계정이 없으신가요?</p>
-                <router-link to = "/signup" active-class="current-page" class="goto-other-page">가입하기</router-link>
-                <!-- <a href="#" class="newuser_signup">가입하기</a> -->
+                <!-- <router-link to = "/signup" active-class="current-page" class="goto-other-page">가입하기</router-link> -->
+                <a href="#" class="newuser_signup" @click="gotoSignup">가입하기</a>
               </div>
             <div class="download__app">
               <p class="downlaod__text">앱을 다운로드 하세요</p>
@@ -80,6 +80,15 @@ export default {
   data: function data() {
     return {
 
+    }
+  },
+  methods: {
+    gotoSignup(){
+      this.$router.push('/signup')
+
+    },
+    isUser(){
+      
     }
   }
 }
