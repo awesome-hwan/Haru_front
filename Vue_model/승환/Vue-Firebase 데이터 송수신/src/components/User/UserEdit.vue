@@ -5,7 +5,7 @@
     <div class="write__image-insert-box">
       <div class="write__image-insert" v-if="!image">
         <h2>이미지를 선택하시오</h2>
-        <input type="file" @change="onFileChange">
+        <input type="file" value="upload" @change="onFileChange" class="fileButton">
       </div>
       <div class="write__image-inserted" v-else>
         <img v-model="user_image" :src="image" />
@@ -49,6 +49,7 @@
 // var firebase = require("firebase");
 
 export default {
+  // 작성하기 버튼 눌렀을때 화면 전환전에 데이터 서버에 업로드
   beforeDestroy() {
     this.$http.post('https://vue-http-81e7b.firebaseio.com/UserHarulist.json', this.user_input)
               .then(function(response) {
@@ -57,6 +58,16 @@ export default {
               .catch(function(error) {
                 console.error(error.message)
               });
+
+            // var files = e.target.files[0];
+            // var storage = firebase.storage();
+            // var pathReference = storage.ref('images/' + files.name)
+            // var storageRef = firebase.storage().ref('images/' + files.name);
+
+            // var gsReference = storage.refFromURL('gs://vue-http-81e7b.appspot.com/images' + )
+
+
+
   },
   data() {
     return {
@@ -70,35 +81,33 @@ export default {
         text: ''
       },
       datalist: []
-      // firebase: requrire("firebase")
     }
   },
   // created() {
   //   this.resource = this.$resource('vue-http-81e7b.appspot.com');
   // },
   methods: {
-    submitimg() {
-     //  console.log(this.$http)
-     //  this.$http.post('https://vue-http-81e7b.firebaseio.com/UserInfo.json', this.user_input)
-     //            .then(function(response) {
-     //              console.log(response);
-     //            })
-     //            .catch(function(error) {
-     //              console.log(error.message);
-     //            })
-     this.resource.update( {}, this.user_image )
-                   .then( response => console.log( response))
-                   .catch( error => console.log(error.message) )
-        // console.log('성공')
-    },
-    onFileChange(e) {
-     var files = e.target.files || e.dataTransfer.files;
-     if (!files.length)
-       return;
-      this.imagefile = files[0];
-       console.log(files[0]);
-     this.createImage(files[0]);
 
+
+    onFileChange(e) {
+
+    //  var files = e.target.files || e.dataTransfer.files;
+    //  if (!files.length)
+    //    return;
+    //   this.imagefile = files[0];
+    //    console.log(files[0]);
+    //  this.createImage(files[0]);
+    //   //create a storage ref
+    //   var storageRef = firebase.storage().ref('images/' + files.name);
+    //   //Upload file
+    //   storageRef.put(files);
+      var files = e.target.files[0];
+
+      var storageRef = firebase.storage().ref('images/' + files.name);
+
+      storageRef.put(files);
+
+      this.createImage(files);
    },
    createImage(file) {
      var image = new Image();
@@ -112,11 +121,6 @@ export default {
    },
    removeImage: function (e) {
      this.image = '';
-   },
-   uploadImage(file) {
-     this.imagefile.post( {}, this.imagefile)
-     .then(function (response) { console.log( 'response :',response) })
-
    },
    submit() {
       this.$http.post('https://vue-http-81e7b.firebaseio.com/UserHarulist.json', this.user_input)
