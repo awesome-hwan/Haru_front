@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box; }
+
+html {
+  font-family: 'Spoqa Han Sans', 'Sans-serif'; }
+
+html, body, div, header, section, h1, h2, p, fieldset, input, label, fieldset, textarea,
+body, h1, h2, h3, input, button, a, form, div, figure, img, p, span, time, ul, li {
+  margin: 0;
+  padding: 0; }
+
+[v-cloak] {
+  display: none; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+fieldset, img, button, input, textarea {
+  border: 0; }
+
+input, select, option, button, textarea {
+  font-size: inherit;
+  font-family: inherit; }
+
+.wrapper {
+  width: 100%;
+  height: 100vh; }
+
+.big-contents__modal {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+
+.big-contents {
+  width: 975px;
+  display: flex; }
+  .big-contents__image-box {
+    width: 640px;
+    height: 640px; }
+  .big-contents__info {
+    width: 335px;
+    height: 640px;
+    padding: 0 0.4rem;
+    background-color: #fff; }
+
+.info__top {
+  height: 50px;
+  border-bottom: 1px solid #c1c1c1; }
+  .info__top::after {
+    content: '';
+    display: block;
+    clear: both; }
+  .info__top-title {
+    font-size: 1.5rem;
+    line-height: 2.2;
+    float: left;
+    height: 100%; }
+  .info__top-date {
+    font-size: 0.9rem;
+    float: right;
+    margin-top: 2rem; }
+
+.info__middle {
+  height: 530px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #c1c1c1; }
+  .info__middle-emotion {
+    display: flex;
+    padding-top: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #c1c1c1; }
+    .info__middle-emotion span {
+      display: inline-block;
+      font-size: 1.7rem;
+      margin-right: 15px; }
+  .info__middle-text {
+    font-size: 1rem;
+    line-height: 1.5; }
+
+.info__bottom {
+  width: 100%;
+  padding: 0 1.6rem; }
+  .info__bottom::after {
+    content: '';
+    display: block;
+    clear: both; }
+  .info__bottom-modify, .info__bottom-delete {
+    font-size: 1rem;
+    padding: 0.7rem 2.5rem;
+    border: 2px solid #28aaa5;
+    border-radius: 5px;
+    background-color: #fff; }
+  .info__bottom-delete {
+    float: right; }
+
+.arrow__box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -550px;
+  margin-top: -27px;
+  width: 1100px; }
+
+.prev__arrow, .next__arrow {
+  font-size: 2.5rem;
+  padding: 1.2rem;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0); }
+
+.next__arrow {
+  float: right; }
+
+/*# sourceMappingURL=../map/detail-page.css.map */
