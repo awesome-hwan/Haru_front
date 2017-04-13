@@ -1,5 +1,24 @@
 @import "./normalize/_setting.normalize.sass"
 
+.write__image-insert-box
+  position: relative
+
+  & .write__image-insert
+    position: absolute
+    bottom: -350px
+    left: 230px
+
+  & .write__image-inserted
+    display: flex
+    justify-content: space-around
+  & img
+    position: absolute
+    max-width: 640px
+    max-height: 640px
+  & button
+    position: absolute
+    bottom: 0
+    
 $media_desk: "screen and ( min-width: $break_pad + 1 )"
 $media_pad: "screen and ( min-width: $break_phone + 1) and ( max-width: $break_pad)"
 $media_phone: "screen and ( max-width: $break_phone )"

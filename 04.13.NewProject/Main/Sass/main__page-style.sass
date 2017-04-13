@@ -1,0 +1,98 @@
+@charset 'utf-8'
+
+
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css)
+@import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents'
+
+@font-face
+	font-family: 'codropsicons'
+	font-weight: normal
+	font-style: normal
+	src: url('../fonts/codropsicons/codropsicons.eot')
+	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg')
+
+body
+	background: #e9ecef
+	// width: rem(1220px)
+.main__header
+	width: rem(1220px)
+	display: none
+
+
+.main
+	width: rem(1220px)
+	margin: 0 auto
+	& .main__title-main
+		display: block
+		width: 100%
+		margin: 0 auto
+		text-align: center
+
+	& .main__title-main
+		margin-top: 2rem
+		color: #03a9f4
+		font-size: 2rem
+
+	& .main__title-sub
+		margin-top: 1rem
+		text-align: center
+		color: #a5aeb5
+		& span
+			color: #df2d70
+
+
+
+.main__contents-button-load
+	display: block
+	margin: 0 auto
+	background: transparent
+	border: 0
+	+square(rem(110px))
+	margin-top: 8rem
+	cursor: pointer
+	&:hover .main__contents-button-load-text
+		color: #03a9f4
+		// display: none
+	&:hover #Rectangle-1
+	 fill: #03a9f4
+	&:hover #Group
+		fill: #03a9f4
+	& .main__contents-button-load-img
+		width: rem(40px)
+		height: rem(45px)
+		background: transparent
+	& .main__contents-button-load-text
+		margin-top: 1rem
+		letter-spacing: 0.2rem
+		display: block
+		color: #979797
+		font-size: 0.65rem
+		text-transform: uppercase
+		font-weight: bold
+		+transition-ease
+
+// ####################### svg 버튼 색상변경 #####################
+#Page-1
+	+transition-ease
+#Group
+	+transition-ease
+
+// ####################### svg 버튼 색상변경 #####################
+.main__footer
+	background: #2d323c
+	margin: 0 auto
+	padding: 4rem 4rem 4rem 0
+	margin-top: 8rem
+	&::after
+	 +clear_fixed
+	& li
+
+		float: left
+
+	& a
+		margin-left: 1rem
+		color: #fff
+	& .main__footer-haru-copyright
+		float: right
+		line-height: 1.5rem
+		color: #fff
