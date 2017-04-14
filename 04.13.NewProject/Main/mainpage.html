@@ -6,11 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Haru main-page</title>
   <link rel="stylesheet" href="./css/main__page-style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <header class="main__header">
-      <h1 class="main__header-logo"><img src="./images/HaruLogo_Black_Finalized.svg" alt="하루한장 메인로고"></h1>
+
+    <div class="main__header-scroll">
+      <img class="main__header-scroll-img" src="./images/14.jordan-whitt-54480.jpg" alt="">
+      <h1 class="main__header-scroll-main"> 눈부셨던 그날의 기억 </h1>
+    </div>
+
+    <!-- <header class="main__header">
+      <h1 class="main__header-logo"><img src="./images/HaruLogo_Black_Finalized.svg" alt="하루한장">하루한장</h1>
       <ul class="main__header-years">
         <li class="main__header-years-heading">Years</li>
         <li class="main__header-years-list"><a href="#">2017</a></li>
@@ -26,67 +33,70 @@
         <li class="main__header-emotions-disgust"><a href="#">짜증</a></li>
       </ul>
       <a href="#" class="main__header-logout">Log out</a>
+    </header> -->
 
-    </header>
 
   <main class="main">
     <div class="main__title">
       <h2 class="main__title-main">지금 이 시간 나를위한 나만의 힐링타임</h2>
       <p class="main__title-sub">소중한 <span>당신</span>의 소중한 <span>하루</span>의 기억</p>
     </div>
-
+    <button class="main__button-edit" type="button" aria-label="edit">
+      <img class="main__contents-button-load-img" src="./images/Pencil.svg" alt="글작성">
+      <span class="main__contents-button-load-text">edit</span>
+    </button>
     <ul class="main__contents">
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/stainless-images-110606.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/1.andreas-p-30199.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Castle in the twilight</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/brooke-lark-229136.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/2.chuttersnap-193788.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Natural saturation effects</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/joshua-earle-157231.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/3.darius-soodmand-116253.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Tip of iceberg</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/david-marcu-125458.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/4.miguel-mateo-212333.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Run on the hill</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/martin-reisch-199362.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/6.alejandra-quiroz-658.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">A tired day</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/mainpage.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/7.averie-woodard-111822.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">A tired day</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/james-donovan-180375.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/10.gabor-juhasz-68424.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Into the forest</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/wil-stewart-109690.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/12.jonatan-pie-234237.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">It's so beautiful.</h3>
         </a>
       </li>
       <li class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="./images/aaron-burden-183659.jpg" alt="Some image" />
+          <img class="main__contents-item-img" src="./images/19.samuel-zeller-157390.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Early adopters</h3>
         </a>
       </li>
@@ -99,7 +109,7 @@
           <span class="main__contents-button-load-text">load more</span>
     </button> -->
 
-<button class="main__contents-button-load" aria-label="Load more images">
+<button class="main__contents-button-load" aria-label="Load more images" type="button">
     <svg width="40px" height="45px" viewBox="0 0 220 243" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
         Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch
 
@@ -117,6 +127,7 @@
     </svg>
     <span class="main__contents-button-load-text">Load more</span>
 </button>
+
   </main>
 
   <footer class="main__footer">
@@ -137,5 +148,48 @@
     <span class="main__footer-haru-copyright">&copy; 2017 하루한장</span>
   </footer>
 </div>
+
+<script>
+var didScroll;
+var lastScrollTop = 0;
+var delta = 1;
+var navbarHeight = $('.main__header-scroll').outerHeight() / 2000;
+
+// var navbarHeight = $(‘header’).outerHeight();
+
+
+$(window).scroll(function(event) {
+  didScroll = true;
+});
+
+setInterval(function() {
+  if(didScroll) {
+    hasSrolled();
+    didScroll = false;
+  }
+}, 250);
+
+function hasSrolled() {
+    var st = $(this).scrollTop();
+
+    if (Math.abs(lastScrollTop - st) <= delta)
+     return;
+
+     if (st > lastScrollTop && st > navbarHeight) {
+        // 스크롤 다운
+       $('.main__header-scroll').addClass('nav-up');
+       $('body').addClass('remove-padding');
+     }
+    //  else {
+    //     // 스크롤 업
+    //    if(st + $(window).height() < $(document).height()) {
+    //      $('.main__header').removeClass('fade-leave-active').addClass('fade-enter-active');
+    //    }
+    //  }
+
+  lastScrollTop = st;
+}
+
+</script>
 </body>
 </html>
