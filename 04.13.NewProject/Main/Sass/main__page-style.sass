@@ -2,7 +2,7 @@
 
 
 @import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css)
-@import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents'
+@import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents', 'main_page-responsive'
 
 @font-face
 	font-family: 'codropsicons'
@@ -12,15 +12,93 @@
 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg')
 
 body
+	// 스크롤을 이벤트를위한  초기 패딩 top
+	padding-top: 100vh
 	background: #e9ecef
-	// width: rem(1220px)
+	transition: all 2.5s ease
+.container
+	width: 100%
+	margin: 0 auto
+.main__header-scroll
+	width: 100%
+	position: fixed
+	top: 0
+	left: 0
+	transition: all 1s ease
+	z-index: 110
+	// display: inline-block
+	& img
+		max-width: 100%
+		min-height: 100%
+
+// 스크롤시 클래스 네임 토클되는것, 스크롤시 탑으로 -90% 이동
+// ########################## 스크롤 이벤트 본격 시작  ##########################
+.nav-up
+  top: -150%
+.remove-padding
+	padding: 0
+
+.main__header-scroll-main
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	z-index: 110
+	color: white
+
+
+// .fade-leave-active
+// 	animation: fade-out 0.3s
+//
+// @keyframes fade-out
+//   from
+// 		opacity: 1
+//   to
+//     opacity: 0
+
+// .fade-enter-active
+//   animation: fade-in 0.3s
+// @keyframes fade-in
+//   from
+//
+//   to
+//     opacity: 1
+
+// ########################## 스크롤 이벤트 끝 ##########################
+
 .main__header
-	width: rem(1220px)
-	display: none
+	position: relative
+	width: 100%
+	background: #2d323c
+	margin: 0 auto
+	padding: 2rem
+	& .main__header-logo
+		+square(rem(64px))
+		overflow: hidden
+		& img
+			+square(rem(64px))
+.main__header-years
+	display: flex
+	flex-direction: column
+	// position: absolute
+	.main__header-years-heading
+
+.main__header-emotions
+	display: flex
+	flex-direction: column
+
+	.main__header-emotions-heading
+
+.main__header-logout
+	float: right
+	+clear_fixed
+
+
+
 
 
 .main
-	width: rem(1220px)
+	width: 100%
 	margin: 0 auto
 	& .main__title-main
 		display: block
@@ -40,7 +118,30 @@ body
 		& span
 			color: #df2d70
 
+// ######################### 버튼 모음 ######################
 
+.main__button-edit
+	position: fixed
+	bottom: 2rem
+	right: 2rem
+	border: 0
+	padding: 1rem
+	border-radius: 50%
+	z-index: 100
+	background: #e9ecef
+	cursor: pointer
+	+transition-ease
+	&:hover
+		+scale-size(1.05)
+		background: #fff
+	+box_shadow(5px, 5px, 15px, .2)
+	& .main__contents-button-load-img
+		+square(rem(40px))
+	& .main__contents-button-load-text
+		display: block
+		font-size: 0.65rem
+		text-transform: uppercase
+		font-weight: bold
 
 .main__contents-button-load
 	display: block
@@ -70,7 +171,7 @@ body
 		text-transform: uppercase
 		font-weight: bold
 		+transition-ease
-
+// ######################### 버튼 모음 ######################
 // ####################### svg 버튼 색상변경 #####################
 #Page-1
 	+transition-ease
@@ -79,6 +180,7 @@ body
 
 // ####################### svg 버튼 색상변경 #####################
 .main__footer
+	width: 100%
 	background: #2d323c
 	margin: 0 auto
 	padding: 4rem 4rem 4rem 0
@@ -86,7 +188,6 @@ body
 	&::after
 	 +clear_fixed
 	& li
-
 		float: left
 
 	& a
