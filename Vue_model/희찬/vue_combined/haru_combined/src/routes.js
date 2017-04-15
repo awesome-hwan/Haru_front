@@ -15,6 +15,7 @@ import writePage2   from   './components/detailPage/writePage2.vue';
 
 
 
+
 export const routes = [
   {path: '/', component: login},
   {path: '/login', component : login},
