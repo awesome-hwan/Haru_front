@@ -2,7 +2,8 @@
 
 
 @import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css)
-@import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents', 'main_page-responsive'
+@import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents', 'main_page-responsive', 'main_page-button-event'
+
 
 @font-face
 	font-family: 'codropsicons'
@@ -40,59 +41,128 @@ body
 
 .main__header-scroll-main
 	position: absolute
-	top: 50%
+	top: 30%
 	left: 50%
 	transform: translate(-50%, -50%)
 	z-index: 110
 	color: white
+.main__header-scroll-arrow
+	+square(rem(40px))
+	position: absolute
+	z-index: 100
+	top: 25%
+	left: 50%
+
+
 
 
 // .fade-leave-active
 // 	animation: fade-out 0.3s
 //
-// @keyframes fade-out
-//   from
-// 		opacity: 1
-//   to
-//     opacity: 0
 
-// .fade-enter-active
-//   animation: fade-in 0.3s
-// @keyframes fade-in
-//   from
-//
-//   to
-//     opacity: 1
+.vertical-active
+  animation: vertical 1s infinite alternate
+  // animation-name: vertical
+  // animation-iteration-count: infinite
+  // animation-direction: alternate
+
+@keyframes vertical
+  from
+			transform: translateY(-2%)
+  to
+  	transform: translateY(2%)
 
 // ########################## 스크롤 이벤트 끝 ##########################
 
 .main__header
 	position: relative
 	width: 100%
-	background: #2d323c
 	margin: 0 auto
-	padding: 2rem
+	background: #2d323c
+	padding: rem(20px) rem(40px) rem(20px) rem(40px)
 	& .main__header-logo
-		+square(rem(64px))
-		overflow: hidden
+		margin-left: 0.5rem
+		& .main__header-logo-text
+			@extend %font-size-color
+			font-size: 2.7rem
+			margin-left: 0.3rem
+			position: absolute
+			top: rem(22px)
 		& img
-			+square(rem(64px))
-.main__header-years
+			width: rem(77px)
+			height: rem(61px)
+			padding-top: 8px
+
+.main__header-nav
+	position: absolute
+	top: 1.5rem
+	right: 2rem
+	display: flex
+	justify-content: flex-end
+	& li
+		cursor: pointer
+		padding-bottom: 0.6rem
+		margin: 0 auto
+		& a
+			color: #fff
+			opacity: 0
+			text-align: center
+			+transition-ease(1s, ease-in-out)
+
+
+	& ul
+		margin-right: 1rem
+
+	& .main__header-years:hover
+		opacity: 1
+		color: #df2d70
+	& .main__header-emotions:hover
+		opacity: 1
+		color: #df2d70
+	& .main__header-years:hover a
+		opacity: 1
+		color: #df2d70
+	& .main__header-emotions:hover a
+		opacity: 1
+		color: #df2d70
+
+	& .main__header-logout:hover
+		color: #df2d70
+
+	.main__header-years-list
+
+		margin-top: 1rem
+		display: block
+		text-align: center
+
+	.main__header-emotions a
+
+		display: block
+		margin-top: 1rem
+
+// ###########################  header-hover ###########################
+%flex-column
 	display: flex
 	flex-direction: column
-	// position: absolute
-	.main__header-years-heading
+
+%font-size-color
+	font-weight: bold
+	color: #fff
+	text-transform: uppercase
+
+.main__header-years
+	@extend %font-size-color
 
 .main__header-emotions
-	display: flex
-	flex-direction: column
-
-	.main__header-emotions-heading
+	@extend %font-size-color
 
 .main__header-logout
-	float: right
-	+clear_fixed
-
+	padding-top: 1rem
+	margin-right: 1rem
+	height: 3rem
+	margin-left: 2rem
+	+transition-ease
+	@extend %font-size-color
 
 
 
@@ -100,6 +170,7 @@ body
 .main
 	width: 100%
 	margin: 0 auto
+	margin-top: 4rem
 	& .main__title-main
 		display: block
 		width: 100%
@@ -126,7 +197,7 @@ body
 	right: 2rem
 	border: 0
 	padding: 1rem
-	border-radius: 50%
+	border-radius: 10px
 	z-index: 100
 	background: #e9ecef
 	cursor: pointer
@@ -134,14 +205,16 @@ body
 	&:hover
 		+scale-size(1.05)
 		background: #fff
-	+box_shadow(5px, 5px, 15px, .2)
+		+box_shadow(5px, 5px, 15px, .2)
 	& .main__contents-button-load-img
-		+square(rem(40px))
+		width: rem(30px)
+		height: rem(30px)
 	& .main__contents-button-load-text
 		display: block
 		font-size: 0.65rem
 		text-transform: uppercase
 		font-weight: bold
+
 
 .main__contents-button-load
 	display: block
