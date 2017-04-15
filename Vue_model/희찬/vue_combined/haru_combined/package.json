@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.2.1"
+    "vue": "^2.2.1",
+    "vue-core-image-upload": "^2.0.13"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -18,8 +19,11 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "imagemagick": "^0.1.3",
+    "ng-file-upload": "^12.2.13",
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
+    "vue-core-image-upload": "^2.0.13",
     "vue-loader": "^11.1.4",
     "vue-resource": "^1.3.0",
     "vue-router": "^2.3.1",

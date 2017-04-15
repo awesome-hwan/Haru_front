@@ -203,6 +203,12 @@
 </template>
 <script>
 export default {
+  mounted: function mounted() {
+    EventBus.$on('message',function(url){
+      console.log(url);
+    });
+
+  },
   name: "",
   data: function data() {
     return {
@@ -219,6 +225,6 @@ export default {
   }
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../../style/mainPage/sass/main__page-style.sass"
 </style>

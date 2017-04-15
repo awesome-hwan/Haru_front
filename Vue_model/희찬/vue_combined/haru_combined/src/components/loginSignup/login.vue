@@ -88,11 +88,11 @@ export default {
 
     },
     isUser(){
-      
+
     }
   }
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../../style/loginSignup/sass/haru.login.1.sass"
 </style>
