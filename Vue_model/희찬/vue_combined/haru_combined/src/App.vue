@@ -10,22 +10,18 @@
 
 <script>
 
+
+
+
 import login from './components/loginSignup/login.vue'
 // import signup from './components/loginSignup/signup.vue'
 
 export default {
-  name: 'app',
-  data () {
-    return {
-    };
-  }
-  // components: {
-  //   haruLogin: login,
-  //   haruSignup: signup
-  // }
+
+
 }
 </script>
 
 <style lang="sass">
-
+@import "./style/settings/setting.normalize.sass"
 </style>

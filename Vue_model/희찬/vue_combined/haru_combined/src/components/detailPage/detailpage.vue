@@ -39,6 +39,6 @@ export default {
   }
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 @import "../../style/detailPage/sass/detail-page.sass"
 </style>
