@@ -1,19 +1,59 @@
+%hidden
+	overflow: hidden
+	position: absolute
+	clip: rect(0 0 0 0)
+	clip: rect(0, 0, 0, 0)
+	width: 1px
+	height: 1px
+	margin: -1px
+	border: 0
+	padding: 0
+
 .wrapper
   background: #181818
   min-height: 100vh
   position: relative
 
-
 .loginSignup__container
   position: fixed
-  top: 20%
+  top: 30%
   left: 50%
   transform: translate(-50%)
-  width: 300px
-  height: 500px
-  background: rgb(56, 56, 56)
+  padding: 3%
+
+  width: 800px
+  background: transparent
   border-radius: 10px
   display: flex
-  justify-content: center
+  justify-content: flex-start
   align-items: center
   flex-direction: column
+
+.login__logo, .or
+  text-align: center
+  color: #fff
+
+
+%hidden
+	overflow: hidden
+	position: absolute
+	clip: rect(0 0 0 0)
+	clip: rect(0, 0, 0, 0)
+	width: 1px
+	height: 1px
+	margin: -1px
+	border: 0
+	padding: 0
+
+legend,label
+  @extend %hidden
+
+form
+  & input
+    width: 100%
+    margin-bottom: 10px
+    padding: 1px
+
+.login__button, .login__button-facebook
+  width: 100%
+  margin-bottom: 5px

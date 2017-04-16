@@ -13,7 +13,6 @@
           <div class="loginSignup__items-box">
             <div class="login__box">
               <h1 class="login__logo"> 하루한장
-              <!--이미지 보류 우선 <img src="../img/logo.png" alt="" class="login__logo-img"> -->
               </h1>
               <form action="javascript:alert('회원님 반갑습니다');" class="login__form" id="login__form">
                 <fieldset class="login__filedset">

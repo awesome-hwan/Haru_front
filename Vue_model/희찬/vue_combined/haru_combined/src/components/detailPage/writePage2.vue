@@ -153,5 +153,5 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-@import "../../style/detailPage/sass/writePage2.sass"
+@import "../../style/detailPage/sass/writePage3.sass"
 </style>
