@@ -98,9 +98,15 @@
       <li v-for="data in datalist" class="main__contents-item">
         <a class="main__contents-link" href="#">
           <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" />
-          <h3 class="main__contents-item-title"> {{ data.h1 }}</h3>
+          <h3 class="main__contents-item-title"> {{ data.diary_heading }}</h3>
         </a>
       </li>
+    </ul>
+
+    <!-- <button class="main__contents-button-load" aria-label="Load more images">
+          <img class="main__contents-button-load-img" src="../images/polaroid.svg" alt="더보기">
+          <span class="main__contents-button-load-text">load more</span>
+    </button> -->
 
     </ul>
   <button @click.prevent="MorePage" class="main__contents-button-load" aria-label="Load more images" type="button">
@@ -182,7 +188,7 @@ MorePage: function() {
 mounted() {
            $(window).on('scroll', () => {
 
-              if( $(window).scrollTop() > 0.1) {
+              if( $(window).scrollTop() > 0.2) {
                $('.main__header-scroll').addClass('nav-up');
                $('.container').addClass('remove-padding');
              }

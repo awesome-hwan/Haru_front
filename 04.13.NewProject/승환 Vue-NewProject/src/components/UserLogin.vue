@@ -18,11 +18,11 @@
             <form action="javascript:alert('회원님 반갑습니다');" class="login__form" id="login__form">
               <fieldset class="login__filedset" >
                 <legend class="login__legend">하루 한장 log in form </legend>
-                <label v-for="data in datalist" class="login__label-email" for="user-id" >이메일</label>
+                <label class="login__label-email" for="user-id" >이메일</label>
                 <input v-model="user_input.email" type="email" class="login__input-email" id="user-id" placeholder="E-mail" required>
                 <label class="login__label-password" for="user-pw">비밀번호</label>
                 <input v-model="user_input.password" type="password" class="login__input-password" id="user-pw" placeholder="password" minlength="8" required>
-                <button class="login__button" type="submit" @click="fetchData">로그인</button>
+                <button class="login__button" type="submit" @click="login">로그인</button>
                 <div class="line__or">
                   <span class="login__line"></span><p class="or">또는</p><span class="login__line"></span>
                 </div>
@@ -79,59 +79,43 @@ export default {
       // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';,
       user_input: {
         email: '',
-        password: '',
-        name: '',
-        user_name: ''
+        password: ''
+
       },
       datalist: [],
       resource: {}
     }
   },
   created() {
-    this.resource = this.$resource('https://vue-http-81e7b.firebaseio.com/UserInfo.json');
+    this.resource = this.$resource('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/');
   },
    methods: {
-      // GoMainPage() {
-      //   `<router-link to = "/" active-class="current-page" class="login__button">로그인</router-link>`
-      // },
-     submitData() {
-      //  console.log(this.$http)
-      //  this.$http.post('https://vue-http-81e7b.firebaseio.com/UserInfo.json', this.user_input)
-      //            .then(function(response) {
-      //              console.log(response);
-      //            })
-      //            .catch(function(error) {
-      //              console.log(error.message);
-      //            })
-      this.resource.save( {}, this.user_input )
-                    .then( response => console.log( response))
-                    .catch( error => console.log(error.message) )
-     },
-    fetchData() {
-      // this.$http.get('https://vue-http-81e7b.firebaseio.com/UserInfo.json', { params: { email: this.user_input } })
-      //           .then( response => {
-      //             return response.json();
-      //           } )
-      //           // .then( data => console.log(Object.values(data)[0].email) )
-      //           .then( data => console.log(data) )
-      //           // .then ( Object.values(data). )
-      //           .catch( error => console.log(error.message) )
-      this.resource.get( {} )
-                    .then( response => {return response.json() ;} )
-                    // .then( data => {this.datalist = Object.values('data');} )
-                    // .then( for data in datalist => return data)
 
-                    .then( function (data) {
-                      for ( var i = 0; i < Object.values(data).length ; i++)
-                      {
-                      // console.log(Object.values(data)[i].email ) }})
-                      if (Object.values(data)[i].email === this.user_input)
-                        { console.log('성공성공')
-                      } else {
-                        console.log('아이디가 존재하지 않습니다.')
-                      }
-                    } } )
-                    .catch( error => console.log(error.message) )
+     submitData() {
+       console.log(this.$http)
+       this.$http.post('https://vue-http-81e7b.firebaseio.com/UserInfo.json', this.user_input)
+                 .then(function(response) {
+                   console.log(response);
+                 })
+                 .catch(function(error) {
+                   console.log(error.message);
+                 })
+      // this.resource.save( {}, this.user_input )
+      //               .then( response => console.log( response))
+      //               .catch( error => console.log(error.message) )
+     },
+    login() {
+      this.$http.get('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/')
+                .then(function(response) {
+                  return response.json();
+                })
+                .then( function (data) {
+                  this.user_input = Object.values(data);
+                })
+                .catch(function(error) {
+                  console.log(error.message);
+                })
+
 
                     }
                    }
