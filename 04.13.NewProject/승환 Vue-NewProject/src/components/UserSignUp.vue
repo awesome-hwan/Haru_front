@@ -22,9 +22,9 @@
               <label class="signup__label-email" for="user-id">이메일</label>
               <input v-model="user_input.email" type="email" class="signup__input-email" id="user-id" placeholder="이메일" required>
               <label class="signup__label-name" for="name">성명</label>
-              <input v-model="user_input.name" type="text" class="signup__input-name" id="name" placeholder="성명" required>
+              <input type="text" class="signup__input-name" id="name" placeholder="성명" required>
               <label class="signup__label-username" for="username">사용자이름</label>
-              <input v-model="user_input.user_name" type="text" class="signup__input-username" id="username" placeholder="사용자이름" required>
+              <input type="text" class="signup__input-username" id="username" placeholder="사용자이름" required>
               <label class="signup__label-password" for="user-pw">비밀번호</label>
               <input v-model="user_input.password" type="password" class="signup__input-password" id="user-pw" placeholder="비밀번호" minlength="8" required>
               <button class="signup__button" type="submit" @click="submitData">가입</button>
@@ -34,7 +34,7 @@
       </div>
           <div class="user__box">
             <p class="user__text">계정이 있으신가요?</p>
-            <router-link to = "/login" active-class="current-page" class="goto-other-page">로그인</router-link>
+            <router-link tag="a" to = "/login" active-class="current-page" class="goto-other-page">로그인</router-link>
             <!-- <a href="#" class="user_login">로그인</a> -->
           </div>
         <div class="download__app">
@@ -76,31 +76,33 @@ export default {
       // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';,
       user_input: {
         email: '',
-        password: '',
-        name: '',
-        user_name: ''
+        password: ''
+
       },
       datalist: [],
       resource: {}
     }
   },
   created() {
-    this.resource = this.$resource('https://vue-http-81e7b.firebaseio.com/UserInfo.json');
+    // this.resource = this.$resource('https://vue-http-81e7b.firebaseio.com/UserInfo.json');
+    // this.resource = this.$resource('http://haru.ycsinabro.com/signup/');
   },
    methods: {
 
      submitData() {
-      //  console.log(this.$http)
-      //  this.$http.post('https://vue-http-81e7b.firebaseio.com/UserInfo.json', this.user_input)
-      //            .then(function(response) {
-      //              console.log(response);
-      //            })
-      //            .catch(function(error) {
-      //              console.log(error.message);
-      //            })
-      this.resource.save( {}, this.user_input )
-                    .then( response => console.log( response))
-                    .catch( error => console.log(error.message) )
+       console.log("input:",this.user_input)
+       console.log(this.$http)
+       this.$http.post('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/signup/', this.user_input)
+                 .then(function(response) {
+                   console.log("res:",response);
+                 })
+                 .catch(function(error) {
+                   console.log("Err",error.message);
+                 })
+      // created firebase 열어놓고 밑에 명령어 실행하면 데이터베이스로 이동함.
+      // this.resource.save( {}, this.user_input )
+      //               .then( response => console.log( response))
+      //               .catch( error => console.log(error.message) )
      },
     fetchData() {
       // this.$http.get('https://vue-http-81e7b.firebaseio.com/UserInfo.json', { params: { email: this.user_input } })

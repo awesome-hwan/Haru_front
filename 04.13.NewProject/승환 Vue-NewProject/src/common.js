@@ -12,21 +12,21 @@ data() {
 },
 
 methods: {
-  fetchData() {
-    this.$http.get('')
-              .then( response => {return response.json()} )
-              .then( data => {this.datalist = Object.values(data)} )
-              .catch( error => console.log(error.message) )
-  },
-  submitData() {
-   //  console.log(this.$http)
-    this.$http.post('', this.user_input)
-              .then(function(response) {
-                console.log(response);
-              })
-              .catch(function(error) {
-                console.log(error.message);
-              })
-    }
+  // fetchData() {
+  //   this.$http.get('')
+  //             .then( response => {return response.json()} )
+  //             .then( data => {this.datalist = Object.values(data)} )
+  //             .catch( error => console.log(error.message) )
+  // },
+  // submitData() {
+  //  //  console.log(this.$http)
+  //   this.$http.post('', this.user_input)
+  //             .then(function(response) {
+  //               console.log(response);
+  //             })
+  //             .catch(function(error) {
+  //               console.log(error.message);
+  //             })
+  //   }
   }
 }
