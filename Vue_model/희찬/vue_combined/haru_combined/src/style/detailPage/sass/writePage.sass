@@ -1,271 +1,150 @@
-@import "../../settings/_setting.normalize.sass"
+%flex_normal
+  display: flex
+  justify-content: center
+  align-items: center
 
-$card_info: ".card__info"
-$media_desk: "screen and ( min-width: $break_pad + 1 )"
-$media_pad: "screen and ( min-width: $break_phone + 1) and ( max-width: $break_pad)"
-$media_phone: "screen and ( max-width: $break_phone )"
-
-$break_phone: 450px
-$break_pad: 1024px
-$desk_pad_width: 640px
-
-@mixin clear_pix
-  content: ''
-  display: block
-  clear: both
-
-@mixin margin_auto
-  margin: 0 auto
-
-@mixin button($font-size, $padding, $border-radius, $background-color)
-  font-size: $font-size
-  padding: $padding
-  border-radius: $border-radius
-  background-color: $background-color
-
-@mixin desk_pad_width-height
-  width: $desk_pad_width
-  height: $desk_pad_width
-
-.card__info
-  @media #{$media_desk}
-    position: absolute
-    top: 50%
-    left: 50%
-    margin-left: -490px
-    margin-top: -320px
-    width: 980px
-    display: flex
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3)
-
-  @media #{$media_pad}
-
-    background-color: #82cdbb
-    width: $desk_pad_width
-    margin: 10% auto 0 auto
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3)
-  @media #{$media_phone}
-    background-color: #16670a
-    width: 95%
-    margin: 0 2.5%
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3)
-
-  &--image
-    @media #{$media_desk}
-      height: 640px
-    @media #{$media_pad}
-      position: relative
-      height: 640px
-      & img
-        position: absolute
-        width: 100%
-        height: auto
-
-    @media #{$media_phone}
-      width: 100%
-      position: relative
-      padding-bottom: 100%
-      overflow: hidden
-      & img
-        position: absolute
-        width: 100%
-
-  &--contents
-    @media #{$media_desk}
-      // background-color: #80c95c
-      width: 340px
-      position: relative
-    @media #{$media_pad}
-      position: relative
-      padding-left: 10px
-      padding-right: 10px
-      &::after
-        @include clear_pix
-    @media #{$media_phone}
-      position: relative
-      padding: 2%
-      &::after
-        @include clear_pix
-
-  &--title
-    @media #{$media_desk}
-      // background-color: #1118d7
-      padding: 10px
-      font-size: 1rem
-      width: 100%
-      font-weight: 300
-    @media #{$media_pad}
-      padding-top: 10px
-      padding-bottom: 10px
-    @media #{$media_phone}
-      // background-color: #1ec966
-      font-size: 1.5rem
-      font-weight: 300
-      padding: 2% 0
-
-  &--emotions
-    @media #{$media_desk}
-      // background-color: #a7ac49
-      display: flex
-      justify-content: space-around
-      padding-top: 5px
-      padding-bottom: 5px
-      & li
-        height: 40px
-        & img
-          width: 40px
-          height: 40px
-
-    @media #{$media_pad}
-      position: absolute
-      top: -15px
-      right: 30px
-      width: 180px
-      display: flex
-      justify-content: space-between
-      &::after
-        @include clear_pix
-      & li
-        height: 30px
-    @media #{$media_phone}
-      position: absolute
-      top: -20px
-      left: 50%
-      width: 50%
-      margin-left: -10%
-      display: flex
-      justify-content: space-between
-      & li
-        height: 40px
-        & img
-          width: 40px
-          height: 40px
-
-  &--text
-    @media #{$media_desk}
-      padding: 10px
-      height: 480px
-      // background-color: #32fcf4
-    @media #{$media_pad}
-      font-size: 1.1rem
-      padding-top: 10px
-      padding-bottom: 10px
-    @media #{$media_phone}
-      // background-color: #5a93cf
-      font-weight: 200
-      padding: 2% 0
-
-  &--date
-    @media #{$media_desk}
-      position: absolute
-      bottom: 10px
-      left: 10px
-      font-size: 1.1rem
-
-    @media #{$media_pad}
-      font-size: 0.8rem
-      display: inline-block
-      padding-top: 1.8rem
-    @media #{$media_phone}
-      background-color: #d13c69
-      font-size: 0.9rem
-      float: left
-      margin-top: 24px
-  &--button-box
-    @media #{$media_desk}
-      position: absolute
-      bottom: 10px
-      right: 10px
-    @media #{$media_pad}
-      float: right
-      padding-top: 5px
-    @media #{$media_phone}
-      // background: #40e051
-      float: right
-  &--modify-button, &--delete-button
-    @media #{$media_desk}
-      @include button(1rem, 0.5rem 1rem, 3px, #214f91)
-    @media #{$media_pad}
-      @include button(0.9rem, 0.6rem 1.2rem, 3px, #bbbeeb)
-    @media #{$media_phone}
-      @include button(1rem, 0.7rem 1.2rem, 3px, #bbeb42)
-
-.arrow__box
-  @media #{$media_desk}
-    // background-color: #8e4256
-    width: 1200px
-    position: absolute
-    top: 50%
-    left: 50%
-    margin-top: -42px
-    margin-left: -600px
-    display: flex
-    justify-content: space-between
-  @media #{$media_pad}
-    position: absolute
-    top: 40%
-    left: 50%
-    margin-left: -400px
-    width: 800px
-    z-index: -99
-    display: flex
-    justify-content: space-between
-  @media #{$media_phone}
-    display: none
-
-
-.arrow__prev, .arrow__next
-
-  @media #{$media_desk}
-    padding: 10px
-    background-color: #fff
-  @media #{$media_pad}
-    background-color: #fff
-
-//파일 전송 관련
-//파일
-//파일
-//파일
 .wrapper
-  width: 100%
-  background: rgba(32, 37, 38,0.8)
   min-height: 100vh
-
-.card__info
-  background: #fff
-
-.pr
+  background: #000
+  padding: 20px
   position: relative
-.pa
-  position: absolute
+
+.write__box
+  background: #fff
+  min-height: 95vh
+  position: relative
+  border: 1px solid #555
+
+
+.write__contentsBox
+  height: 90vh
+  @extend %flex_normal
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2)
+  border: 1px solid #555
+  position: relative
+  // top: 0
+  // left: 0
+  // right: 0
+
+.write__imageBox
+  background: rgb(168, 150, 235)
+  width: 56%
+  height: 82%
+  background: #ecf1f4
+  border: 1px solid #555
+  position: relative
+
 
 .haruphoto
-  width: 100%
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
   opacity: 0
-
-.img-upload-cancel-btn
   top: 0
+  width: 100%
+  height: 100%
+  z-index: 1
+  position: absolute
+
+.imageInputbox
+  width: 100%
+
+.imageIcon
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%)
 
 .prevImg
-  width: 100%
-  height: auto
+  position: absolute
+  max-width: 100%
+  max-height: 100%
 
-.card__info--image
+.img-upload-cancel-btn
+  position: absolute
+
+.write__textBox
+  height: 82%
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  flex-direction: column
+  border: 1px solid #555
+
+
+.write__haru-text,.write__emotions,.write__haru-title
   width: 100%
-.card__info--text
-  width: 100%
+
+.write__haru-title,.write__emotions
+  font-size: 1.5rem
+  height: 15%
+  border-bottom: 1px solid black
+.write__haru-text
+  height: 70%
+.write__emotions
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+
+
+//버튼들
 
 .modal-close
-  position: fixed
-  top: 0
+  position: absolute
+  border: 0
+  background: url("../../images/writepage/buttons/x_button.png") no-repeat
+  width: 35px
+  height: 35px
+  background-size: 100%
+  top: 20px
+  left: 20px
+  z-index: 10
+  cursor: pointer
+
+.wirte__button
+  position: absolute
+  bottom: 0
   right: 0
+  color: #fff
+  background-color: #1d1d1d
+  padding-top: 1em
+  padding-bottom: 1em
+  padding-left: 1.4em
+  padding-right: 1.4em
+  cursor: pointer
+  border: 0
+  border-radius: 5px
 
 
-.haru_test
-  width: 300px
-  height: 300px
-  background: url('https://firebasestorage.googleapis.com/v0/b/haruphoto-6ad66.appspot.com/o/haruphoto%2Fbuda.jpg?alt=media&token=ba19d007-dc09-4dac-9328-0fa4466a3e3d') no-repeat
+
+
+  // background: url("../../images/writepage/buttons/write_button.svg") no-repeat
+  // background-size: 100%
+
+
+
+@media screen and (min-width:431px) and (max-width:1024px)
+
+  .write__contentsBox
+    flex-direction: column
+    justify-content: flex-start
+
+  .write__imageBox
+    width: 100%
+    height: 60%
+
+  .write__textBox
+    width: 100%
+    height: 40%
+
+@media screen and (max-width:430px)
+
+  .write__contentsBox
+    flex-direction: column
+    justify-content: flex-start
+
+  .write__imageBox
+    width: 100%
+    height: 60%
+
+  .write__textBox
+    width: 100%
+    height: 40%
