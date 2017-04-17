@@ -32,3 +32,5 @@ new Vue({
   router,
   render: h => h(App)
 });
+
+axios.defaults.baseURL = 'http://haru-eb.ap-northeast-2.elasticbeanstalk.com';
