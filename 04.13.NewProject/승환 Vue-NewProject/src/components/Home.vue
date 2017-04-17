@@ -110,10 +110,10 @@
       <li v-for="data in datalist" class="main__contents-item">
         <a class="main__contents-link" href="#">
           <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" />
-          <h3 class="main__contents-item-title"> {{ data.h1 }}</h3>
+          <h3 class="main__contents-item-title"> {{ data.diary_heading }}</h3>
         </a>
       </li>
-      
+
     </ul>
 
 
@@ -201,7 +201,7 @@ MorePage: function() {
 mounted() {
            $(window).on('scroll', () => {
 
-              if( $(window).scrollTop() > 0.1) {
+              if( $(window).scrollTop() > 0.2) {
                $('.main__header-scroll').addClass('nav-up');
                $('.container').addClass('remove-padding');
              }

@@ -1,33 +1,43 @@
 <template>
-  <div>
-  <section class="card__info">
-    <figure class="card__info--image">
-      <img src="http://placehold.it/640x640" alt="컨텐츠 이미지" title="컨텐츠 이미지">
-    </figure>
-    <article class="card__info--contents">
-      <h1 class="card__info--title" contenteditable="true">제목</h1>
-      <ul class="card__info--emotions">
-        <li title="기쁨"><img src="../../images/emotions/happy.svg" alt="기쁨" width="30" height="30"></li>
-        <li title="슬픔"><img src="../../images/emotions/sad.svg" alt="슬픔" width="30" height="30"></li>
-        <li title="보통"><img src="../../images/emotions/normal.svg" alt="보통" width="30" height="30"></li>
-        <li title="짜증"><img src="../../images/emotions/irritation.svg" alt="짜증" width="30" height="30"></li>
-        <li title="분노"><img src="../../images/emotions/angry.svg" alt="분노" width="30" height="30"></li>
-      </ul>
-      <p class="card__info--text" contenteditable="true">절대 포기하지 말라. 당신이 되고 싶은 무언가가 있다면, 그에 대해 자부심을 가져라. 당신 자신에게 기회를 주어라. 스스로가 형편없다고 생각하지 말라. 그래봐야 아무 것도 얻을 것이 없다. 목표를 높이 세워라.인생은 그렇게 살아야 한다.</p>
-      <p class="card__info--date">
-        <time>2017.04.01</time>
-      </p>
-      <div class="card__info--button-box">
-        <!-- <button type="button" name="button" class="card__info--modify-button">수정</button> -->
-        <router-link to="/Edit" type="button" name="button" class="card__info--modify-button" tag="button">수정</router-link>
-        <button type="button" name="button" class="card__info--delete-button">삭제</button>
-      </div>
-    </article>
-  </section>
-  <div class="arrow__box">
-    <button type="button" class="arrow__prev"><img src="../../images/prev_arrow.svg" alt="이전버튼" width="60" height="60"></button>
-    <button type="button" class="arrow__next"><img src="../../images/next_arrow.svg" alt="다음버튼" width="60" height="60"></button>
-  </div>
+  <div class="wrapper">
+    <!-- 모달 윈도우 -->
+    <div class="modal">
+      <!-- 상세 페이지 컨텐츠 영역 -->
+      <section class="detail-contents">
+        <!-- 상세페이지 나가기 버튼 -->
+        <img class="detail-contents--exit" src="../../images/x_button.png" alt="나가기 버튼" width="32" height="32">
+        <!-- 컨텐츠 내용 영역 -->
+        <article class="detail-contents__article">
+          <figure class="detail-contents__figure">
+            <!-- 컨텐츠 이미지 -->
+            <img src="../../images/21.stephanie-mccabe-24620.jpg" alt="" class="detail-contents--image" width="600" height="400">
+            <img src="../../images/emotions/angry.svg" alt="기쁨" class="detail-contents--emotion" width="40" height="40">
+          </figure>
+          <!-- <div class="untitle"> -->
+            <!-- 컨텐츠 제목 영역 -->
+            <h1 class="detail-contents__title">Lorem ipsum dolor sit amet.</h1>
+            <!-- 컨텐츠 내용 영역 -->
+            <p class="detail-contents__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sequi eligendi, libero ab distinctio aliquam nostrum, quibusdam dolorem. Similique, quia soluta ad nisi perferendis distinctio, reiciendis id aperiam ut quam assumenda, labore enim, rem cumque  dicta maxime! Dolor voluptatum ipsam recusandae fugit minus, ratione accusamus optio eius. Architecto suscipit dolorum consectetur quae, laborum maiores optio in quam praesentium! Illum commodi sint totam repellat consequatu.</p>
+            <!-- 날짜 시간 영역 -->
+            <p class="detail-content--date">
+              <time class="date__time">2017.04.03</time>
+            </p>
+            <div class="detail-contents__button--box">
+              <button type="button" class="detail-contents--modify__button">수정</button>
+              <button type="button" class="detail-contents--delete__button">삭제</button>
+            </div>
+          <!-- </div> -->
+        </article>
+        <div class="arrow-box">
+          <button type="button" class="detail-contents--arrow-left">
+            <img src="../../images/arrow-left.png" alt="이전 컨텐츠 이동" width="60" height="80">
+          </button>
+          <button type="button" class="detail-contents--arrow-right">
+            <img src="../../images/arrow-right.png" alt="다음 컨텐츠 이동" width="60" height="80">
+          </button>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 <script>
@@ -41,5 +51,5 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-  @import "../../Sass_detail/page.sass"
+  @import "../../Sass_detail/main.sass"
 </style>
