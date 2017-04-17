@@ -2,7 +2,7 @@
 
 //Load components
 import login       from   './components/loginSignup/login2.vue';
-import signup      from   './components/loginSignup/signup.vue';
+import signup      from   './components/loginSignup/signup2.vue';
 import mainpage    from   './components/mainPage/mainpage.vue';
 import detailpage  from   './components/detailPage/detailpage.vue';
 import loginSignup from   './components/loginSignup/loginSignup.vue';

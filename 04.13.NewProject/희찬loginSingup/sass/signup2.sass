@@ -1,16 +1,21 @@
+@import 'loginSignup2.sass'
+@import '_setting.normalize.sass'
 
+.loginSignupBox
+	background: #fbf6f6
 
-.login__form
+.signup__form
 	position: relative
 	width: 100%
 	& input
 		@extend %buttonInput
+	&	legend,label,
+	  @extend %hidden
 
-legend,label,
-  @extend %hidden
 
 
-.login__button, .login__button-facebook
+
+.signup__button, .signup__button-facebook
 
 	width: 100%
   margin-bottom: 5px
@@ -18,12 +23,12 @@ legend,label,
 	background: transparent
 	@extend %buttonInput
 
-.login__button
+.signup__button
 	background: #da2f6f
 	color: #fff
 
 
-.login__button-facebook
+.signup__button-facebook
 	background: #2686c1
 	display: flex
 	align-items: center
@@ -31,7 +36,7 @@ legend,label,
 	color: #fff
 
 .fb__icon
-	background: url("../../images/facebook.svg") no-repeat center
+	background: url("../images/facebook.svg") no-repeat center
 	background-size: cover
 	width: 18px
 	height: 18px
@@ -39,14 +44,14 @@ legend,label,
 	align-items: center
 	margin-right: 5px
 
-.login__password-find
+.signup__password-find
 	position: absolute
 	top: 59px
 	right: 5px
 
 
-.newuser__box
+.user__box
 	display: flex
-.newuser__text
+.user__text
 	margin-right: 5px
 	margin-bottom: 8px
