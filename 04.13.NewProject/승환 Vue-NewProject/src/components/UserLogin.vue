@@ -15,14 +15,14 @@
             <h1 class="login__logo"> 하루한장
             <!--이미지 보류 우선 <img src="../img/logo.png" alt="" class="login__logo-img"> -->
             </h1>
-            <form action="javascript:alert('회원님 반갑습니다');" class="login__form" id="login__form">
+            <form action="javascript:alert('회원님 반갑습니다');" class="login__form" id="login__form" ref="form" method="POST" @submit.prevent="login" enctype="multipart/form-data">
               <fieldset class="login__filedset" >
                 <legend class="login__legend">하루 한장 log in form </legend>
                 <label class="login__label-email" for="user-id" >이메일</label>
-                <input v-model="user_input.email" type="email" class="login__input-email" id="user-id" placeholder="E-mail" required>
+                <input v-model="user_input.email" type="email" class="login__input-email" name="email" id="user-id" placeholder="E-mail" required>
                 <label class="login__label-password" for="user-pw">비밀번호</label>
-                <input v-model="user_input.password" type="password" class="login__input-password" id="user-pw" placeholder="password" minlength="8" required>
-                <button class="login__button" type="submit" @click="login">로그인</button>
+                <input v-model="user_input.password" type="password" class="login__input-password" name="password" id="user-pw" placeholder="password" minlength="8" required>
+                <button class="login__button" type="submit">로그인</button>
                 <div class="line__or">
                   <span class="login__line"></span><p class="or">또는</p><span class="login__line"></span>
                 </div>
@@ -83,12 +83,13 @@ export default {
 
       },
       datalist: [],
-      resource: {}
+      resource: {},
+      form: ''
     }
   },
-  created() {
-    this.resource = this.$resource('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/');
-  },
+  // created() {
+  //   this.resource = this.$resource('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/');
+  // },
    methods: {
 
      submitData() {
@@ -105,21 +106,33 @@ export default {
       //               .catch( error => console.log(error.message) )
      },
     login() {
-      this.$http.get('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/')
-                .then(function(response) {
-                  return response.json();
-                })
-                .then( function (data) {
-                  this.user_input = Object.values(data);
-                })
-                .catch(function(error) {
-                  console.log(error.message);
-                })
+
+      var userData = new FormData(this.$refs.form);
+      // user.append('email',this.user_input.email);
+      // user.append('password',this.user_input.password);
+      axios.post('/login/', userData)
+      .then(function (response) {
+        console.log('응답:',response);
+      })
+      .catch(function (error) {
+        console.log('에러:',error);
+      });
+      // this.$http.get('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/', user )
+      //           .then(function(response) {
+      //             // return response.json();
+      //             console.log('응답:', response);
+      //           })
+      //           // .then( function (data) {
+      //           //   _this.user_input = Object.values(data);
+      //           // })
+      //           .catch(function(error) {
+      //             console.log(error.message);
+      //           })
 
 
-                    }
-                   }
-                 }
+    }
+ }
+}
 
 </script>
 <style lang="sass" scoped>
