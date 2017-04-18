@@ -66,14 +66,14 @@
     </footer>
   </div>
 </template>
-<!-- <script src="../common.js"></script> -->
+
 <script>
 
 export default {
 
   data() {
     return {
-      // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';,
+
       user_input: {
         email: '',
         password: ''
@@ -82,10 +82,6 @@ export default {
       datalist: [],
       resource: {}
     }
-  },
-  created() {
-    // this.resource = this.$resource('https://vue-http-81e7b.firebaseio.com/UserInfo.json');
-    // this.resource = this.$resource('http://haru.ycsinabro.com/signup/');
   },
    methods: {
 
@@ -99,24 +95,9 @@ export default {
                  .catch(function(error) {
                    console.log("Err",error.message);
                  })
-      // created firebase 열어놓고 밑에 명령어 실행하면 데이터베이스로 이동함.
-      // this.resource.save( {}, this.user_input )
-      //               .then( response => console.log( response))
-      //               .catch( error => console.log(error.message) )
-     },
-    fetchData() {
-      // this.$http.get('https://vue-http-81e7b.firebaseio.com/UserInfo.json', { params: { email: this.user_input } })
-      //           .then( response => {
-      //             return response.json();
-      //           } )
-      //           // .then( data => console.log(Object.values(data)[0].email) )
-      //           .then( data => console.log(data) )
-      //           // .then ( Object.values(data). )
-      //           .catch( error => console.log(error.message) )
-      this.resource.get( {}, this.user_input )
-                    .then( response => console.log( response))
-                    .catch( error => console.log(error.message) )
-    }
+
+         }
+
    }
 }
 </script>

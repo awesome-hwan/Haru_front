@@ -15,7 +15,7 @@
             <h1 class="login__logo"> 하루한장
             <!--이미지 보류 우선 <img src="../img/logo.png" alt="" class="login__logo-img"> -->
             </h1>
-            <form action="javascript:alert('회원님 반갑습니다');" class="login__form" id="login__form" ref="form" method="POST" @submit.prevent="login" enctype="multipart/form-data">
+            <form class="login__form" id="login__form" ref="form" method="GET" @submit.prevent="login" enctype="multipart/form-data">
               <fieldset class="login__filedset" >
                 <legend class="login__legend">하루 한장 log in form </legend>
                 <label class="login__label-email" for="user-id" >이메일</label>
@@ -70,13 +70,13 @@
   </div>
 
 </template>
-<!-- <script src="../common.js"></script> -->
+
 <script>
 
 export default {
   data() {
     return {
-      // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';,
+
       user_input: {
         email: '',
         password: ''
@@ -87,48 +87,18 @@ export default {
       form: ''
     }
   },
-  // created() {
-  //   this.resource = this.$resource('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/');
-  // },
    methods: {
+        login() {
 
-     submitData() {
-       console.log(this.$http)
-       this.$http.post('https://vue-http-81e7b.firebaseio.com/UserInfo.json', this.user_input)
-                 .then(function(response) {
-                   console.log(response);
-                 })
-                 .catch(function(error) {
-                   console.log(error.message);
-                 })
-      // this.resource.save( {}, this.user_input )
-      //               .then( response => console.log( response))
-      //               .catch( error => console.log(error.message) )
-     },
-    login() {
+          var userData = new FormData(this.$refs.form);
 
-      var userData = new FormData(this.$refs.form);
-      // user.append('email',this.user_input.email);
-      // user.append('password',this.user_input.password);
-      axios.post('/login/', userData)
-      .then(function (response) {
-        console.log('응답:',response);
-      })
-      .catch(function (error) {
-        console.log('에러:',error);
-      });
-      // this.$http.get('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/login/', user )
-      //           .then(function(response) {
-      //             // return response.json();
-      //             console.log('응답:', response);
-      //           })
-      //           // .then( function (data) {
-      //           //   _this.user_input = Object.values(data);
-      //           // })
-      //           .catch(function(error) {
-      //             console.log(error.message);
-      //           })
-
+          axios.post('/login/', userData)
+          .then(function (response) {
+            console.log('응답:',response);
+          })
+          .catch(function (error) {
+            console.log('에러:',error);
+          });
 
     }
  }
