@@ -62,7 +62,7 @@ legend, label {
   width: 45%;
   background: #b9b5b5;
   position: relative;
-  height: auto;
+  height: 500px;
   border-radius: 10px;
   display: flex;
   justify-content: space-around;
