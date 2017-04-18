@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>signup</title>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+  <section class="signup">
+    <h1 class="signup__logo"><img src="images/haru-logo.png" alt="하루한장 메인로고"></h1>
+    <h2 class="signup__title">하루한장 회원가입</h2>
+
+    <div class="signup__box">
+      <form class="signup__form">
+        <fieldset class="signup__fieldset">
+          <legend class="signup hidden">회원가입 화면</legend>
+          <label class="signup__label-email" for="signup__input-email">이메일</label>
+          <input type="email" id="signup__input-email" placeholder="E-mail">
+          <label class="signup__label-password" for="signup__input-password">비밀번호</label>
+          <input type="password" id="signup__input-password" placeholder="password">
+          <label class="signup__label-password-confirm" for="signup__input-password-confirm">비밀번호 재확인</label>
+          <input type="password" id="signup__input-password-confirm" placeholder="Confirm Password">
+          <button class="signup__button" type="submit">계정 만들기</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="signup__login-box">
+      <p class="signup__login-text">아이디가 있으신가요?</p>
+      <a href="#" class="signup__login-link">로그인 바로가기</a>
+    </div>
+
+  </section>
+</body>
+</html>

@@ -1,0 +1,49 @@
+.main__contents
+  position: relative
+  width: rem(1220px)
+  margin: 0 auto
+  padding: 0
+  display: flex
+  justify-content: space-around
+  flex-wrap: wrap
+  margin-top: 4rem
+
+  & .main__contents-item
+    font-family: 'Caveat', cursive
+    display: block
+    +square(rem(400px))
+    padding: 10px 10px 50px 10px
+    margin: 10px 0 30px
+    &:hover .main__contents-link
+      +box_shadow
+      +scale-size(1.2)
+    &:hover .main__contents-item-title
+    // &::after
+    //   content: "d안녕"
+
+
+  & .main__contents-link
+    +transition-ease
+    display: block
+    padding: rem(10px) rem(10px) 0 rem(10px)
+    background: #fff
+    width: 100%
+  & .main__contents-item-img
+    display: block
+    max-width: rem(360px)
+    min-height: rem(360px)
+    // width: 100%
+    // height: auto
+
+  & .main__contents-item-title
+    +transition-ease
+    line-height: 1
+    position: relative
+    overflow: hidden
+    margin: 0
+    padding: 1em 0.5em
+    text-align: left
+    white-space: nowrap
+    text-overflow: ellipsis
+    color: #698b8d
+    background: #fff
