@@ -45,6 +45,6 @@ export default {
 }
 </script>
 
-<style lang="sass" >
+<style lang="sass" scoped>
   @import '../../style/loginSignup/sass/login'
 </style>

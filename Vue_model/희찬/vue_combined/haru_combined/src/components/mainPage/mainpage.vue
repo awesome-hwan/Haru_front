@@ -103,12 +103,6 @@
     </li>
   </ul>
 
-  <!-- <button class="main__contents-button-load" aria-label="Load more images">
-        <img class="main__contents-button-load-img" src="../../images/polaroid.svg" alt="더보기">
-        <span class="main__contents-button-load-text">load more</span>
-  </button> -->
-
-  </ul>
 <button @click.prevent="MorePage" class="main__contents-button-load" aria-label="Load more images" type="button">
   <svg width="40px" height="45px" viewBox="0 0 220 243" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
       Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch

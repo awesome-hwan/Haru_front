@@ -1,15 +1,15 @@
 <template >
   <div>
-    <form class="signup__form" id="signup__form">
+    <form class="signup__form" id="signup__form" ref="form" method="POST" @submit="submit" enctype="multipart/form-data">
       <fieldset class="signup__filedset">
         <legend class="signup__legend">하루 한장 Signup form </legend>
         <label class="signup__label-email" for="user-id">이메일</label>
-        <input type="email" class="signup__input-email" id="user-id" placeholder="이메일" required v-model="user_info.newUser_email">
+        <input type="email" class="signup__input-email" id="user-id" placeholder="이메일" required v-model="user_info.newUser_email" name="email">
         <label class="signup__label-password" for="user-pw">비밀번호</label>
-        <input type="password" class="signup__input-password" id="user-pw" placeholder="비밀번호" minlength="8" required v-model="user_info.newUser_password">
+        <input type="password" class="signup__input-password" id="user-pw" placeholder="비밀번호" minlength="8" required v-model="user_info.newUser_password" name="password">
         <label class="signup__label-passwordConfirm" for="confirm-userPw">비밀번호</label>
-        <input type="password" class="signup__input-passwordConfirm" id="confirm-userPw" @keyup="validatePassword" placeholder="비밀번호확인" minlength="8" required v-model="user_info.newUser_passwordConfirm">
-        <button class="signup__button" type="submit">가입</button>
+        <input type="password" class="signup__input-passwordConfirm" id="confirm-userPw" @keyup="validatePassword" placeholder="비밀번호확인" minlength="8" required>
+        <button class="signup__button" type="submit" >가입</button>
         <button class="signup__button-facebook">
           <span class="fb__icon"></span>
           <span href="#" class="signup__facebook">Facebook으로 로그인</span>
@@ -27,12 +27,16 @@
 
 <script>
 export default {
+  mounted: function mounted() {
+    //do something after mounting vue instance
+    console.log(axios);
+  },
   data: function data() {
     return {
       user_info: {
        newUser_email : '',
        newUser_password : '',
-       newUser_passwordConfirm : '',
+
      }
     }
   },
@@ -47,13 +51,15 @@ export default {
       }
     },
     submit(){
-      this.$http.post('https://haru-logintest.firebaseio.com/haruUserList.json',this.user_info)
-                .then(function(response){
-                  console.log(response);
 
+      var userData = new FormData(this.$refs.form);
+
+      axios.post('/signup/',userData)
+                .then(function(response){
+                  console.log("응답:",response);
                 })
                 .catch(function(error){
-                  console.error(error.message);
+                  console.error("에러:",error.message);
                 })
 
 
@@ -65,6 +71,6 @@ export default {
 }
 </script>
 
-<style lang="sass" >
+<style lang="sass" scoped>
   @import '../../style/loginSignup/sass/signup'
 </style>

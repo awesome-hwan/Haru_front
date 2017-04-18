@@ -9,6 +9,9 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
+    loaders: [
+      { test: require.resolve("jquery"), loader: "expose-loader?$!expose-loader?jQuery" },
+    ],
     rules: [
       {
         test: /\.vue$/,
