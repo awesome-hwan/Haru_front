@@ -57,7 +57,7 @@ export default {
     var hours = now.getHours();
 
     now_time.innerHTML=`${years}-${month}-${day}`
-    //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기
+    //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기 주석 테스트
   },
   data: function data() {
     return {
