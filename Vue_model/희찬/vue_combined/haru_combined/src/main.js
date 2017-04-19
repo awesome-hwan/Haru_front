@@ -1,15 +1,32 @@
 import Vue       from 'vue'
 import VueCoreImageUpload  from 'vue-core-image-upload';
-import VueResource from 'vue-resource'
+
+// import VueResource from 'vue-resource'
+
 import VueRouter from 'vue-router'
 import {routes}  from  './routes'
 import App       from './App.vue'
+// import 'expose-loader?$!expose-loader?jQuery!jquery'
+import vScroll   from 'vue-scroll'
 
-Vue.use(VueResource);
+import axios from 'axios'
+
+
+
+
+// Vue.use(VueResource);
+
 Vue.use(VueRouter);
 Vue.use(VueCoreImageUpload);
 // Vue.use(VueRouter);
-//
+
+
+Vue.use(VueRouter);
+Vue.use(axios);
+Vue.use(vScroll)
+
+// Vue.prototype.$http = axios;
+
 
 const router = new VueRouter({
   mode:"history",
@@ -42,18 +59,30 @@ new Vue({
 
 });
 
+axios.defaults.baseURL = 'http://haru-eb.ap-northeast-2.elasticbeanstalk.com';
 
+// axios.defaults.baseURL                         = 'https://api.example.com';
+// axios.defaults.headers.common['Authorization'] = 'Token dab1748ebaceb34ed6796bc3b7dc84741b77af54';
+// axios.defaults.headers.post['Content-Type']    = 'application/x-www-form-urlencoded';
+//
+// axios.get('https://api.codecraft.tv/samples/v1/')
+//      .then(function(response) {
+//       console.log(response);
+//      })
+//      .catch(function(error) {
+//       console.error(error.message);
+//      });
 
 
 
 
   // Initialize Firebase
-  var config = {
-      apiKey: "AIzaSyA-BHdAVVSiiBvutOOk-2yrBqhQm2QWuGU",
-      authDomain: "haruphoto-6ad66.firebaseapp.com",
-      databaseURL: "https://haruphoto-6ad66.firebaseio.com",
-      projectId: "haruphoto-6ad66",
-      storageBucket: "haruphoto-6ad66.appspot.com",
-      messagingSenderId: "1019051872273"
-    };
-    firebase.initializeApp(config);
+  // var config = {
+  //     apiKey: "AIzaSyA-BHdAVVSiiBvutOOk-2yrBqhQm2QWuGU",
+  //     authDomain: "haruphoto-6ad66.firebaseapp.com",
+  //     databaseURL: "https://haruphoto-6ad66.firebaseio.com",
+  //     projectId: "haruphoto-6ad66",
+  //     storageBucket: "haruphoto-6ad66.appspot.com",
+  //     messagingSenderId: "1019051872273"
+  //   };
+  //   firebase.initializeApp(config);

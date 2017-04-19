@@ -10,9 +10,6 @@
 
 <script>
 
-
-
-
 import login from './components/loginSignup/login.vue'
 // import signup from './components/loginSignup/signup.vue'
 

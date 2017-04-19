@@ -57,15 +57,29 @@ export default {
   },
    methods: {
         login() {
-
+          var _this = this
           var userData = new FormData(this.$refs.form);
 
           axios.post('/login/', userData)
           .then(function (response) {
             console.log('응답:',response);
+
+            if ( response.status === 200 ) {
+               alert(_this.user_input.email + '님 반갑습니다 ^^');
+
+               _this.$router.push({path: '/home'});
+
+            } else {
+
+               alert('이메일 또는 비밀번호를 다시 확인해주세요');
+
+            }
           })
           .catch(function (error) {
             console.log('에러:',error);
+
+            alert('이메일 또는 비밀번호를 다시 확인해주세요');
+
           });
 
     }
