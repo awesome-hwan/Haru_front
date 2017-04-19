@@ -37,7 +37,7 @@
   background: rgb(168, 150, 235)
   width: 63%
   height: 77%
-  background: #ecf1f4
+  background: #fff
   border: 1px solid #555
   position: relative
 
@@ -88,8 +88,12 @@
   height: 70%
 .write__emotions
   display: flex
-  justify-content: space-around
-  align-items: center  
+  justify-content: flex-start
+  align-items: center
+  & input
+    margin-right: 5px
+  & img
+    margin-right: 5px
 //버튼들
 
 .modal-close
@@ -124,6 +128,13 @@
   padding-right: 1.5em
   cursor: pointer
   border: 0
+
+.nowtime
+  position: absolute
+  bottom: 5px
+  left: 35px
+
+
 @media screen and (min-width:431px) and (max-width:1024px)
 
   .write__contentsBox
