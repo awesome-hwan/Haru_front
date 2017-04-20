@@ -20,37 +20,17 @@
 
             <input class="write__haru-title" type="text" name="title" placeholder="제목" v-model="haru_diary.diary_heading">
             <div name="emotions" class="write__emotions">
-<<<<<<< HEAD
-              <input value="기쁨" title="기쁨" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-happy"><img src="../../images/emotions/happy.svg" alt="기쁨" width="25" height="25">
-              <input value="슬픔" title="슬픔" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-sad"><img src="../../images/emotions/sad.svg" alt="슬픔" width="25" height="25">
-              <input value="보통" title="보통" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-normal"><img src="../../images/emotions/normal.svg" alt="보통" width="25" height="25">
-              <input value="짜증" title="짜증" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-rage"><img src="../../images/emotions/irritation.svg" alt="짜증" width="25" height="25">
-              <input value="분노" title="분노" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-angry"><img src="../../images/emotions/angry.svg" alt="분노" width="25" height="25">
-=======
               <input value="1" title="기쁨" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-happy"><img src="../../images/emotions/happy.svg" alt="기쁨" width="25" height="25">
               <input value="2" title="그럭저럭" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-normal"><img src="../../images/emotions/normal.svg" alt="보통" width="25" height="25">
               <input value="3" title="슬픔" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-sad"><img src="../../images/emotions/sad.svg" alt="슬픔" width="25" height="25">
               <input value="4" title="짜증" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-rage"><img src="../../images/emotions/irritation.svg" alt="짜증" width="25" height="25">
               <input value="5" title="분노" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-angry"><img src="../../images/emotions/angry.svg" alt="분노" width="25" height="25">
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
             </div>
             <textarea class="write__haru-text"  v-model="haru_diary.diary_text" placeholder="오늘 하루는 어땠어?"></textarea>
 
           </div>
-
-
-
-<<<<<<< HEAD
-          <!-- <button type="button" name="button" class="geturl__button" @submit.prevent="getPhoto">작성</button> -->
-          <button type="button" name="button" class="wirte__button" @click.prevent="submit">작성</button>
-=======
-
           <button type="button" name="button" class="wirte__button" @click="postHaru">작성</button>
-<<<<<<< HEAD
-=======
->>>>>>> 257769a54b4741ef58747180a25e87e234693ebc
           <span class="nowtime"></span>
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
         </div>
       </div>
       <button class="modal-close" @click="gotoMain"></button>
@@ -58,29 +38,8 @@
 
 </template>
 <script>
-import {EventBus} from '../../event-bus.js'
+
 export default {
-<<<<<<< HEAD
-  // mounted: function mounted() {
-  //   //일단 날짜 표시
-  //   var now_time = document.querySelector('.nowtime');
-  //   var now = new Date();
-  //   var years = now.getFullYear();
-  //   var month = now.getMonth()+1;
-  //   if(month<10){
-  //     month='0'+month;
-  //   }
-  //   var day = now.getDate();
-  //   var hours = now.getHours();
-  //
-  //   now_time.innerHTML=`${years}-${month}-${day}`
-  //   //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기
-  // },
-  data: function data() {
-    return {
-        image: '',
-        imgUrl:'',
-=======
   mounted: function mounted() {
     //일단 날짜 표시
     var now_time = document.querySelector('.nowtime');
@@ -95,30 +54,25 @@ export default {
 
     now_time.innerHTML=`${years}-${month}-${day}`
     //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기 주석 테스
-    //시간
-    //시간
-    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
-    window.Blob = Blob
   },
   data: function data() {
     return {
         image: '',
 
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
         storageRef:'',
         haru_diary:{
           diary_heading:'',
           diary_text:'',
-<<<<<<< HEAD
-          diary_emotions:''
-=======
           diary_emotions:'',
           image_link:'',
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
         },
-        haruUrl:'',
-        fileName:''
+        haruUrl:''
       }
+  },
+  mounted(){
+
+
+
   },
   methods: {
     gotoMain(){
@@ -129,18 +83,7 @@ export default {
       if (!files.length)
         return;
       this.createImage(files[0]);
-<<<<<<< HEAD
-      this.imgUrl = e.target.files[0];
-=======
       this.haru_diary.image_link = e.target.files[0];
-<<<<<<< HEAD
-      this.storageRef = files;
-      console.log("기존에 한 거랑 파일 형식 차이 보기 !",this.haru_diary.image_link);
-      console.log("기존에 한 거랑 파일 형식 차이 보기 ! 파일스 ->", files);
-
-=======
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
->>>>>>> 257769a54b4741ef58747180a25e87e234693ebc
     },
     createImage(file) {
       var image = new Image();
@@ -155,83 +98,49 @@ export default {
     removeImage: function (e) {
       this.image = '';
     },
-<<<<<<< HEAD
-  postHaru(){
-  console.log("콘솔에 찍혀야 되는데 ");
-},
-
-=======
-<<<<<<< HEAD
     postHaru(){
-       var file= this.imgUrl;
-       console.log(file);
-       var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-       storageRef.put(file)
-                 .then(
-        // this.$router.push('/mainpage')
-        this.$http.post('https://vue-http-81e7b.firebaseio.com/UserHarulist.json',this.haru_diary)
-                  .then(response => console.log(response))
+      // let self = this;
 
-                  .catch(error => console.error(error.message))
-        )
-        // .then(
-        //   this.$router.push('/mainpage')
-        // )
-        //
-        // Create a reference with an initial file path and name
+      var _this = this;
 
-        this.storageRef = storageRef;
-
-        this.$router.push({path: '/'});
-    },
-
-    getPhoto(){
-    var storageRef = this.storageRef;
-    storageRef.getDownloadURL().then(function(url) {
-      // `url` is the download URL for 'images/stars.jpg'
-
-      // This can be downloaded directly:
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        var blob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
-      console.log('url: ', url)
-
-      this.haruUrl=url;
-      // url을 받아 온 다음에 메인 페이지로 이 값을 넘겨줘야 한다.
-      // 데이터의 흐름을 쉽게 하기 위해서 vuex랑 eventBus를 쓴다
-
-      // eventBus.$emit('message',url);
-
-
-      // var img = document.getElementById('myimage');
-      // console.log('이미지 이미지', img);
-      // img.setAttribute('src',url);
-
-
-    }).catch(function(error) {
-
-    })
-  }
-=======
-
-    postHaru(){
        var file= this.haru_diary.image_link;
-       this.haru_diary.image_link = JSON.stringify(this.haru_diary.image_link);
-       console.log(file);
+
+
+
+
+        //파이어베이스 코드
        var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-      storageRef.put(file)
-                .then(
-      axios.post('https://haruphoto-6ad66.firebaseio.com/haruDiary.json',this.haru_diary)
-                  .then(response => console.log(response))
-                  .catch(error => console.error(error.message)))
-    }
->>>>>>> 7bdeeb07b66a5783211e4f654b27400ba5692af3
->>>>>>> 257769a54b4741ef58747180a25e87e234693ebc
-  }
+       var uploadTask = storageRef.put(file);
+
+        uploadTask.on('state_changed', function(snapshot){
+          switch(snapshot.state){
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running');
+              break;
+          }
+        },function(error){
+            console.error(error.message)
+          },function(){
+          this.haruUrl = uploadTask.snapshot.downloadURL;
+          console.log('다운로드 URL',this.haruUrl);
+          console.log('useredit_this: ', this);
+          console.log("_this.", _this);
+          _this.$store.imgURL=this.haruUrl;
+          console.log("_this.img", _this.$store.imgURL);  
+          // this.$store.imgURL=this.haruUrl;
+          // console.log('전역에 저장 ', Vue.prototype.$store.imgURL);
+          });
+          axios.post("https://haruphoto-6ad66.firebaseio.com/haru_diary.json",this.haru_diary)
+
+          // axios.post("http://haru-eb.ap-northeast-2.elasticbeanstalk.com/post/",this.haru_diary)
+            .then(response => console.log(response))
+            .catch(error => console.error(error.message))
+
+      }
+}
 }
 </script>
 <style lang="sass" scoped>

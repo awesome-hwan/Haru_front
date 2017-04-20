@@ -56,20 +56,17 @@ export default {
     }
   },
    methods: {
-        login() {
-
-          var userData = new FormData(this.$refs.form);
-
-          axios.post('/login/', userData)
-          .then(function (response) {
-            console.log('응답:',response);
-          })
-          .catch(function (error) {
-            console.log('에러:',error);
-          });
-
-    }
- }
+           login() {
+               var userData = new FormData(this.$refs.form);
+               axios.post('/login/', userData)
+               .then(function (response) {
+                 console.log('응답:',response);
+               })
+               .catch(function (error) {
+                 console.log('에러:',error);
+               });
+         }
+     }
 }
 
 </script>

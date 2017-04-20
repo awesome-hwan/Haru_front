@@ -166,7 +166,7 @@
 </template>
 
 <script>
-
+// import {EventBus} from '../../event-bus.js'
 export default {
   data() {
     return {
@@ -199,6 +199,9 @@ MorePage: function() {
 
 },
 mounted() {
+
+
+
            $(window).on('scroll', () => {
 
               if( $(window).scrollTop() > 0.2) {

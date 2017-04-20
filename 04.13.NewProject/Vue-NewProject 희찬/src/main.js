@@ -5,6 +5,9 @@ import { routes } from './routes.js'
 import App from './App.vue'
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 import vScroll from 'vue-scroll'
+
+
+
 // import firebase from "firebase";
 // import * as firebase from "firebase";
 // import Common from './common.js'
@@ -15,26 +18,6 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(vScroll)
 
-// Points to the root reference
-var storageRef = firebase.storage().ref();
-
-// Points to 'images'
-var imagesRef = storageRef.child('haruphotos');
-
-// Points to 'images/space.jpg'
-// Note that you can use variables to create child values
-
-var spaceRef = imagesRef.child(fileName);
-
-// File path is 'images/space.jpg'
-var path = spaceRef.fullPath
-
-// File name is 'space.jpg'
-var name = spaceRef.name
-
-// Points to 'images'
-var imagesRef = spaceRef.parent;
-
 
 //Global Settings
 // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';
@@ -43,6 +26,26 @@ var imagesRef = spaceRef.parent;
 const router = new VueRouter({
   mode: 'history',
   routes
+});
+
+const EventBus = new Vue();
+
+const store = {
+  token: '',
+  imgURL: 'aa'
+}
+
+Object.defineProperties(Vue.prototype, {
+  $eventBus: {
+    get() {
+      return EventBus;
+    }
+  },
+  $store: {
+    get() {
+      return store;
+    }
+  }
 });
 
 // var EventBus = new Vue();
