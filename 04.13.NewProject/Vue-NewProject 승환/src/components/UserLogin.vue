@@ -52,7 +52,8 @@ export default {
       },
       datalist: [],
       resource: {},
-      form: ''
+      form: '',
+      hasToken: ''
     }
   },
    methods: {
@@ -67,6 +68,9 @@ export default {
             if ( response.status === 200 ) {
                alert(_this.user_input.email + '님 반갑습니다 ^^');
 
+
+                _this.hasToken = response.data.key
+                console.log('_this.hasToken :' , _this.hasToken)
                _this.$router.push({path: '/home'});
 
             } else {

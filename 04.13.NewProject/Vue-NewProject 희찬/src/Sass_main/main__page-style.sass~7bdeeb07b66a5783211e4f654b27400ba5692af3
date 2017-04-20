@@ -20,21 +20,19 @@
 // 	// margin: 0
 // body
 // 	margin: 0
-// 	transition 2.5s >> 1s
 .container
 	padding-top: 100vh
 	background: #e9ecef
-	transition: all 1s ease
+	transition: all 2.5s ease
 	width: 100%
 	margin: 0 auto
 
-// 	transition 1s >> 0.8s
 .main__header-scroll
 	width: 100%
 	position: fixed
 	top: 0
 	left: 0
-	transition: all 0.8s ease
+	transition: all 1s ease
 	z-index: 110
 	// display: inline-block
 	& img
@@ -209,7 +207,7 @@
 	border: 0
 	padding: 1rem
 	border-radius: 10px
-	z-index: 100
+	z-index: 1000
 	background: #e9ecef
 	cursor: pointer
 	+transition-ease

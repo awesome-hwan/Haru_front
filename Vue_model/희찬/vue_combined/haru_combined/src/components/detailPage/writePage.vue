@@ -61,7 +61,7 @@ export default {
   data: function data() {
     return {
         image: '',
-        imgUrl:'',
+        image_link:'',
         storageRef:'',
         haru_diary:{
           diary_heading:'',
@@ -80,7 +80,7 @@ export default {
       if (!files.length)
         return;
       this.createImage(files[0]);
-      this.imgUrl=e.target.files[0];
+      this.image_link=e.target.files[0];
     },
     createImage(file) {
       var image = new Image();
@@ -96,13 +96,13 @@ export default {
       this.image = '';
     },
     postHaru(){
-       var file= this.imgUrl;
+       var file= this.image_link;
        console.log(file);
        var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
        storageRef.put(file)
                  .then(
         // this.$router.push('/mainpage')
-        this.$http.post('https://haruphoto-6ad66.firebaseio.com/haruDiary.json',this.haru_diary)
+        this.$http.post('https://haruphoto-6ad66.firebaseio.com/haruDiary.json',this.haru_diary,)
                   .then(response => console.log(response))
 
                   .catch(error => console.error(error.message))
