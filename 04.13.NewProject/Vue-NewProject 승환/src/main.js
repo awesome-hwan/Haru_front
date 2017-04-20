@@ -20,6 +20,26 @@ Vue.use(vScroll)
 // Vue.http.options.root = 'https://vue-http-81e7b.firebaseio.com/UserInfo.json';
 // Vue.http.headers.common['Authorizetion'] = 'Token YXBpOnBhc3B3B3Hk';
 
+const EventBus = new Vue();
+
+const store = {
+  token: '',
+  imgURL: ''
+};
+
+Object.defineProperties(Vue.prototype, {
+  $EventBus: {
+    get() {
+      return EventBus;
+    }
+  },
+  $store: {
+    get () {
+      return store;
+    }
+  }
+});
+
 const router = new VueRouter({
   mode: 'history',
   routes

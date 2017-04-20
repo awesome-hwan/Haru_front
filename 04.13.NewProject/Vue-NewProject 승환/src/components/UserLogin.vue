@@ -10,7 +10,7 @@
           </div>
 
         <form class="login__form" id="login__form"
-              ref="form" method="GET" @submit.prevent="login" enctype="multipart/form-data">
+              ref="form" method="POST" @submit.prevent="login" enctype="multipart/form-data">
           <fieldset class="login__filedset">
             <legend class="login__legend">하루 한장 log in form </legend>
             <label class="login__label-email" for="user-id">이메일</label>
@@ -59,20 +59,33 @@ export default {
    methods: {
         login() {
           var _this = this
+
           var userData = new FormData(this.$refs.form);
 
           axios.post('/login/', userData)
           .then(function (response) {
+
             console.log('응답:',response);
 
             if ( response.status === 200 ) {
                alert(_this.user_input.email + '님 반갑습니다 ^^');
 
 
-                _this.hasToken = response.data.key
-                console.log('_this.hasToken :' , _this.hasToken)
+                // _this.hasToken = response.data.key
+                _this.$store.token = response.data.key
+                // console.log('_this.hasToken :' , _this.hasToken)
+
+                // store를 이용하여 토큰값을 다른 컴포넌트간 공유
+                // this.$store.token = _this.hasToken
+
+                console.log('this.$store.token : ', _this.$store.token)
+
                _this.$router.push({path: '/home'});
 
+                // Cookie setting
+                setCookie('HaruToken', _this.hasToken, 90);
+
+                // location.href = "/login"
             } else {
 
                alert('이메일 또는 비밀번호를 다시 확인해주세요');
@@ -85,7 +98,12 @@ export default {
             alert('이메일 또는 비밀번호를 다시 확인해주세요');
 
           });
-
+          function setCookie(name, value, expireDays) {
+            var exdate=new Date();
+            exdate.setDate(exdate.getDate() + expireDays);
+            var c_value=escape(value) + ((expireDays==null) ? "" : "; expires="+exdate.toUTCString());
+            document.cookie =name + "=" + c_value;
+          }
     }
  }
 }
