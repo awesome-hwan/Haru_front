@@ -24,7 +24,8 @@
           <li class="main__header-emotions-fear"><a href="#">쏘쏘</a></li>
           <li class="main__header-emotions-disgust"><a href="#">짜증</a></li>
         </ul>
-        <a href="#" class="main__header-logout split-line-fill">Log out</a>
+        <a href="#" class="main__header-logout split-line-fill" Methods="POST" @click.prevent="logout">Log out</a>
+        <!-- <router-link to="/login" class="main__header-logout split-line-fill" tag="a">Log out</router-link> -->
     </nav>
     </header>
 
@@ -195,10 +196,34 @@ MorePage: function() {
         .catch( e => {
           this.errors.push(e)
         })
-}
+},
+logout() {
+  console.log('logout token: ', this.$store.token)
+  axios.post('/logout/','', {
+    headers: {
+      'Authorization': 'Token ' + this.$store.token
+    }
+  })
+.then(function (response) {
+  console.log('응답:',response);
+})
+
+
+this.$router.push({path: '/login'});}
 
 },
 mounted() {
+  // this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
+  //           .then(function(response) {
+  //             return response.json();
+  //           })
+  //           .then( function(data) {
+  //             this.datalist = Object.values(data);
+  //           })
+  //           .catch(function(error) {
+  //             console.error(error.message)
+  //           });
+
            $(window).on('scroll', () => {
 
               if( $(window).scrollTop() > 0.2) {
@@ -206,6 +231,9 @@ mounted() {
                $('.container').addClass('remove-padding');
              }
            });
+            // this.$store.token >> login시에 발생하는 토큰값을 받아옴.
+            console.log('mounted store :', this.$store.token )
+
             // firebase에 저장된 데이터를 mounted때 불러온다.
           //  this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
           //            .then(function(response) {
@@ -219,6 +247,7 @@ mounted() {
           //            });
 
        },
+
 created() {
   this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
             .then(function(response) {
@@ -231,7 +260,7 @@ created() {
               console.error(error.message)
             });
 
-}
+ }
 }
 
 </script>
