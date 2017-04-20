@@ -32,8 +32,8 @@
 
 
 
-
-          <button type="button" name="button" class="wirte__button" @click="postHaru">작성</button>
+          <!-- <button type="button" name="button" class="geturl__button" @submit.prevent="getPhoto">작성</button> -->
+          <button type="button" name="button" class="wirte__button" @click.prevent="submit">작성</button>
           <span class="nowtime"></span>
         </div>
       </div>
@@ -42,7 +42,7 @@
 
 </template>
 <script>
-// import {eventBus} from '../../EventBus';
+import {EventBus} from '../../event-bus.js'
 export default {
   mounted: function mounted() {
     //일단 날짜 표시
@@ -57,7 +57,11 @@ export default {
     var hours = now.getHours();
 
     now_time.innerHTML=`${years}-${month}-${day}`
-    //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기 주석 테스트
+    //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기 주석 테스
+    //시간
+    //시간
+    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
+    window.Blob = Blob
   },
   data: function data() {
     return {
@@ -70,7 +74,8 @@ export default {
           diary_emotions:'',
           image_link:'',
         },
-        haruUrl:''
+        haruUrl:'',
+        fileName:''
       }
   },
   methods: {
@@ -83,6 +88,10 @@ export default {
         return;
       this.createImage(files[0]);
       this.haru_diary.image_link = e.target.files[0];
+      this.storageRef = files;
+      console.log("기존에 한 거랑 파일 형식 차이 보기 !",this.haru_diary.image_link);
+      console.log("기존에 한 거랑 파일 형식 차이 보기 ! 파일스 ->", files);
+
     },
     createImage(file) {
       var image = new Image();
@@ -97,18 +106,10 @@ export default {
     removeImage: function (e) {
       this.image = '';
     },
+  postHaru(){
+  console.log("콘솔에 찍혀야 되는데 ");
+},
 
-    postHaru(){
-       var file= this.haru_diary.image_link;
-       this.haru_diary.image_link = JSON.stringify(this.haru_diary.image_link);
-       console.log(file);
-       var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-      storageRef.put(file)
-                .then(
-      axios.post('https://haruphoto-6ad66.firebaseio.com/haruDiary.json',this.haru_diary)
-                  .then(response => console.log(response))
-                  .catch(error => console.error(error.message)))
-    }
   }
 }
 </script>

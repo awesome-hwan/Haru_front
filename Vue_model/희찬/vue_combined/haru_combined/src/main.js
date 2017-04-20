@@ -34,6 +34,13 @@ const router = new VueRouter({
 });
 
 
+//파이어베이스 참조 만들기
+
+// var storage = firebase.storage();
+// var storageRef = storage.ref();
+// var imagesRef = storageRef.child('haruphoto');
+
+
 // const router = new VueRouter({
 //   mode:"history"
 // });

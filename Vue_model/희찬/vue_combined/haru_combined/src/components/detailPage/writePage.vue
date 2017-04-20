@@ -96,22 +96,10 @@ export default {
       this.image = '';
     },
     postHaru(){
-       var file= this.image_link;
-       console.log(file);
-       var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-       storageRef.put(file)
-                 .then(
-        // this.$router.push('/mainpage')
-        this.$http.post('https://haruphoto-6ad66.firebaseio.com/haruDiary.json',this.haru_diary,)
-                  .then(response => console.log(response))
 
-                  .catch(error => console.error(error.message))
+    console.log("버튼버튼 ")
         )
-        // .then(
-        //   this.$router.push('/mainpage')
-        // )
-        //
-        // Create a reference with an initial file path and name
+
 
         this.storageRef = storageRef;
 
@@ -119,6 +107,7 @@ export default {
     },
 
     getPhoto(){
+
     var storageRef = this.storageRef;
     storageRef.getDownloadURL().then(function(url) {
       // `url` is the download URL for 'images/stars.jpg'
@@ -134,15 +123,6 @@ export default {
       console.log('url: ', url)
 
       this.haruUrl=url;
-      // url을 받아 온 다음에 메인 페이지로 이 값을 넘겨줘야 한다.
-      // 데이터의 흐름을 쉽게 하기 위해서 vuex랑 eventBus를 쓴다
-
-      eventBus.$emit('message',url);
-
-
-      // var img = document.getElementById('myimage');
-      // console.log('이미지 이미지', img);
-      // img.setAttribute('src',url);
 
 
     }).catch(function(error) {
