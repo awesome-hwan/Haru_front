@@ -200,14 +200,14 @@ MorePage: function() {
         })
 },
 logout() {
-  console.log('logout token: ', this.$store.token)
+  // console.log('logout token: ', this.$store.token)
   axios.post('/logout/','', {
     headers: {
       'Authorization': 'Token ' + this.$store.token
     }
   })
 .then(function (response) {
-  console.log('응답:',response);
+  // console.log('응답:',response);
 })
 
 
@@ -233,6 +233,17 @@ mounted() {
                $('.container').addClass('remove-padding');
              }
            });
+
+
+           axios.get('/user/','', {
+             headers: {
+               'Authorization': 'Token ' + this.$store.token
+             }
+           })
+         .then(function (response) {
+           console.log('User 응답:',response);
+         })
+
             // this.$store.token >> login시에 발생하는 토큰값을 받아옴.
             // console.log('mounted store :', this.$store.token )
 
@@ -274,10 +285,10 @@ created() {
  updated() {
 
    var ImgSrc = document.querySelectorAll('.main__contents-item-img')
-   console.log('ImgSrc :', ImgSrc)
-  // console.log(ImgSrc[ImgSrc.length - 1].setAttribute.src = this.imgURL),
+  //  console.log('ImgSrc :', ImgSrc)
+  console.log(ImgSrc[ImgSrc.length - 1].setAttribute.src = this.imgURL),
   ImgSrc[ImgSrc.length - 1].setAttribute('src', this.imgURL)
-    console.log('this.imgURL___지금 :', this.imgURL)
+    // console.log('this.imgURL___지금 :', this.imgURL)
 
 
  }
