@@ -111,7 +111,7 @@
       <li v-for="data in datalist" class="main__contents-item">
         <a class="main__contents-link" href="#">
           <!-- <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" /> -->
-          <img class="main__contents-item-img" src='' alt="Some image" />
+          <img id="newOne" class="main__contents-item-img" src='' alt="Some image" />
           <h3 class="main__contents-item-title"> {{ data.title }} </h3>
         </a>
       </li>
