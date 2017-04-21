@@ -52,14 +52,16 @@ export default {
       },
       datalist: [],
       resource: {},
-      form: '',
-      hasToken: ''
+      form: ''
+
     }
   },
    methods: {
         login() {
           var _this = this
 
+            console.log('this', this)
+            console.log('_this', _this)
           var userData = new FormData(this.$refs.form);
 
           axios.post('/login/', userData)
@@ -83,7 +85,7 @@ export default {
                _this.$router.push({path: '/home'});
 
                 // Cookie setting
-                setCookie('HaruToken', _this.hasToken, 90);
+                setCookie('HaruToken', _this.$store.token, 90);
 
                 // location.href = "/login"
             } else {

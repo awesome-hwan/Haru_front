@@ -37,9 +37,17 @@
   background: rgb(168, 150, 235)
   width: 63%
   height: 77%
-  background: #ecf1f4
+  background: #fff
   border: 1px solid #555
   position: relative
+
+#uploader
+  position: absolute
+  z-index: 100
+  appearance: none
+  top: 45%
+  left: 50%
+  transform: translate(-50%)
 
 
 .haruphoto
@@ -88,8 +96,12 @@
   height: 70%
 .write__emotions
   display: flex
-  justify-content: space-around
-  align-items: center  
+  justify-content: flex-start
+  align-items: center
+  & input
+    margin-right: 5px
+  & img
+    margin-right: 5px
 //버튼들
 
 .modal-close
@@ -114,16 +126,23 @@
   // width: 40px
   // height: 40px
   position: absolute
-  bottom: 1.5em
-  right: 1.5em
+  bottom: 0
+  right: 0
   color: #fff
-  background-color: #1d1d1d
+  background-color: #696767
   padding-top: 1em
   padding-bottom: 1em
   padding-left: 1.5em
   padding-right: 1.5em
   cursor: pointer
   border: 0
+
+.nowtime
+  position: absolute
+  bottom: 5px
+  left: 35px
+
+
 @media screen and (min-width:431px) and (max-width:1024px)
 
   .write__contentsBox
