@@ -110,8 +110,9 @@
 
       <li v-for="data in datalist" class="main__contents-item">
         <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" />
-          <h3 class="main__contents-item-title"> {{ data.diary_heading }}</h3>
+          <!-- <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" /> -->
+          <img class="main__contents-item-img" src='' alt="Some image" />
+          <h3 class="main__contents-item-title"> {{ data.title }} </h3>
         </a>
       </li>
 
@@ -173,7 +174,8 @@ export default {
     return {
       posts: [],
       next: null,
-      datalist: []
+      datalist: [],
+      imgURL: this.$store.imgURL
     }
   },
 
@@ -232,8 +234,14 @@ mounted() {
              }
            });
             // this.$store.token >> login시에 발생하는 토큰값을 받아옴.
-            console.log('mounted store :', this.$store.token )
+            // console.log('mounted store :', this.$store.token )
 
+
+
+            // ImgSrc[ImgSrc.length -1 ].setAttribute.src = this.imgURL
+
+            // console.log( 'this.$store.imgURL :', this.$store.imgURL)
+            // console.log( 'this.imgURL :', this.imgURL)
             // firebase에 저장된 데이터를 mounted때 불러온다.
           //  this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
           //            .then(function(response) {
@@ -249,6 +257,8 @@ mounted() {
        },
 
 created() {
+
+
   this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
             .then(function(response) {
               return response.json();
@@ -259,6 +269,16 @@ created() {
             .catch(function(error) {
               console.error(error.message)
             });
+
+ },
+ updated() {
+
+   var ImgSrc = document.querySelectorAll('.main__contents-item-img')
+   console.log('ImgSrc :', ImgSrc)
+  // console.log(ImgSrc[ImgSrc.length - 1].setAttribute.src = this.imgURL),
+  ImgSrc[ImgSrc.length - 1].setAttribute('src', this.imgURL)
+    console.log('this.imgURL___지금 :', this.imgURL)
+
 
  }
 }

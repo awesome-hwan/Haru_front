@@ -14,26 +14,24 @@
               <img :src="image"  class="prevImg" >
               <button @click="removeImage" class="pa img-upload-cancel-btn">Remove image</button>
             </div>
+            <progress v-show="Show" value="0" max="100" id="uploader">0%</progress>
         </div>
           <!---######################### 텍스트 +감정영역 ###################-->
           <div class="write__textBox">
 
-            <input class="write__haru-title" type="text" name="title" placeholder="제목" v-model="haru_diary.diary_heading">
+            <input class="write__haru-title" type="text" name="title" placeholder="제목" v-model="haru_diary.title">
             <div name="emotions" class="write__emotions">
-              <input value="기쁨" title="기쁨" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-happy"><img src="../../images/emotions/happy.svg" alt="기쁨" width="25" height="25">
-              <input value="슬픔" title="슬픔" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-sad"><img src="../../images/emotions/sad.svg" alt="슬픔" width="25" height="25">
-              <input value="보통" title="보통" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-normal"><img src="../../images/emotions/normal.svg" alt="보통" width="25" height="25">
-              <input value="짜증" title="짜증" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-rage"><img src="../../images/emotions/irritation.svg" alt="짜증" width="25" height="25">
-              <input value="분노" title="분노" type="radio" name="emotions" v-model="haru_diary.diary_emotions" class="write__emotions-angry"><img src="../../images/emotions/angry.svg" alt="분노" width="25" height="25">
+              <input value="1" title="기쁨" type="radio" name="emotions" v-model="haru_diary.status" class="write__emotions-happy"><img src="../../images/emotions/happy.svg" alt="기쁨" width="25" height="25">
+              <input value="2" title="그럭저럭" type="radio" name="emotions" v-model="haru_diary.status" class="write__emotions-normal"><img src="../../images/emotions/normal.svg" alt="보통" width="25" height="25">
+              <input value="3" title="슬픔" type="radio" name="emotions" v-model="haru_diary.status" class="write__emotions-sad"><img src="../../images/emotions/sad.svg" alt="슬픔" width="25" height="25">
+              <input value="4" title="짜증" type="radio" name="emotions" v-model="haru_diary.status" class="write__emotions-rage"><img src="../../images/emotions/irritation.svg" alt="짜증" width="25" height="25">
+              <input value="5" title="분노" type="radio" name="emotions" v-model="haru_diary.status" class="write__emotions-angry"><img src="../../images/emotions/angry.svg" alt="분노" width="25" height="25">
             </div>
-            <textarea class="write__haru-text"  v-model="haru_diary.diary_text" placeholder="오늘 하루는 어땠어?"></textarea>
+            <textarea class="write__haru-text"  v-model="haru_diary.content" placeholder="오늘 하루는 어땠어?"></textarea>
 
           </div>
-
-
-
-
           <button type="button" name="button" class="wirte__button" @click="postHaru">작성</button>
+          <span class="nowtime"></span>
         </div>
       </div>
       <button class="modal-close" @click="gotoMain"></button>
@@ -41,34 +39,36 @@
 
 </template>
 <script>
-// import {eventBus} from '../../EventBus';
+
 export default {
-  // mounted: function mounted() {
-  //   //일단 날짜 표시
-  //   var now_time = document.querySelector('.nowtime');
-  //   var now = new Date();
-  //   var years = now.getFullYear();
-  //   var month = now.getMonth()+1;
-  //   if(month<10){
-  //     month='0'+month;
-  //   }
-  //   var day = now.getDate();
-  //   var hours = now.getHours();
-  //
-  //   now_time.innerHTML=`${years}-${month}-${day}`
-  //   //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기
-  // },
+  mounted: function mounted() {
+    //일단 날짜 표시
+    var now_time = document.querySelector('.nowtime');
+    var now = new Date();
+    var years = now.getFullYear();
+    var month = now.getMonth()+1;
+    if(month<10){
+      month='0'+month;
+    }
+    var day = now.getDate();
+    var hours = now.getHours();
+
+    now_time.innerHTML=`${years}-${month}-${day}`
+    //시간 데이터를 보낼 일이 생기면 새벽 5시는 전날로 처리해서 보내기 주석 테스
+  },
   data: function data() {
     return {
         image: '',
-        imgUrl:'',
+
         storageRef:'',
         haru_diary:{
-          diary_heading:'',
-          diary_text:'',
-          diary_emotions:''
+          title:'',
+          content:'',
+          status:'',
+          image: this.$store.imgURL
         },
-        haruUrl:''
+        haruUrl:'',
+        Show: false
       }
   },
   methods: {
@@ -80,7 +80,7 @@ export default {
       if (!files.length)
         return;
       this.createImage(files[0]);
-      this.imgUrl = e.target.files[0];
+      this.haru_diary.image = e.target.files[0];
     },
     createImage(file) {
       var image = new Image();
@@ -96,60 +96,61 @@ export default {
       this.image = '';
     },
     postHaru(){
-       var file= this.imgUrl;
-       console.log(file);
+
+
+
+
+
+      var _this = this;
+
+      var file= this.haru_diary.image;
+
+      //progressbar
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
        var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-       storageRef.put(file)
-                 .then(
-        // this.$router.push('/mainpage')
-        this.$http.post('https://vue-http-81e7b.firebaseio.com/UserHarulist.json',this.haru_diary)
-                  .then(response => console.log(response))
+       var uploadTask = storageRef.put(file);
+       var uploader = document.querySelector('#uploader');
+        _this.Show = true
+        uploadTask.on('state_changed', function progress(snapshot){
 
-                  .catch(error => console.error(error.message))
-        )
-        // .then(
-        //   this.$router.push('/mainpage')
-        // )
-        //
-        // Create a reference with an initial file path and name
-
-        this.storageRef = storageRef;
-
-        this.$router.push({path: '/'});
-    },
-
-    getPhoto(){
-    var storageRef = this.storageRef;
-    storageRef.getDownloadURL().then(function(url) {
-      // `url` is the download URL for 'images/stars.jpg'
-
-      // This can be downloaded directly:
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        var blob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
-      console.log('url: ', url)
-
-      this.haruUrl=url;
-      // url을 받아 온 다음에 메인 페이지로 이 값을 넘겨줘야 한다.
-      // 데이터의 흐름을 쉽게 하기 위해서 vuex랑 eventBus를 쓴다
-
-      // eventBus.$emit('message',url);
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ;
+          uploader.value = percentage;
 
 
-      // var img = document.getElementById('myimage');
-      // console.log('이미지 이미지', img);
-      // img.setAttribute('src',url);
+          // switch(snapshot.state){
+          //   case firebase.storage.TaskState.PAUSED: // or 'paused'
+          //     console.log('Upload is paused');
+          //     break;
+          //   case firebase.storage.TaskState.RUNNING: // or 'running'
+          //     console.log('Upload is running');
+          //
+          //     break;
+          // }
+        },function(error){
+            console.error(error.message)
+          },function(){
+          _this.$store.imgURL = uploadTask.snapshot.downloadURL;
+          console.log("_imageURL", _this.$store.imgURL);
+          // this.$store.imgURL=this.haruUrl;
+          // console.log('전역에 저장 ', Vue.prototype.$store.imgURL);
 
+              _this.$router.push('/home')
+          });
+          axios.post("https://vue-http-81e7b.firebaseio.com/UserHarulist.json",_this.haru_diary)
 
-    }).catch(function(error) {
+          // axios.post("http://haru-eb.ap-northeast-2.elasticbeanstalk.com/post/",this.haru_diary)
+            .then(response => console.log(response))
+            .catch(error => console.error(error.message))
 
-    })
-  }
-  }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      }
+}
 }
 </script>
 <style lang="sass" scoped>
