@@ -69,18 +69,6 @@ export default {
          this.user_input.validation = true;
        }
      },
-    //  submitData() {
-    //    console.log("input:",this.user_input)
-    //    console.log(this.$http)
-    //    this.$http.post('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/signup/', this.user_input)
-    //              .then(function(response) {
-    //                console.log("res:",response);
-    //              })
-    //              .catch(function(error) {
-    //                console.log("Err",error.message);
-    //              })
-     //
-    //      },
          submitData() {
            var _this  = this
             // console.log(_this);
@@ -90,6 +78,7 @@ export default {
            .then(function (response) {
              console.log('응답:',response.status)
              if ( response.status === 201 ) {
+               //이 부분 컴포넌트 창 띄워서 하는 걸로 수정 
                 alert(_this.user_input.email + '님 회원가입을 축하드립니다.');
 
                 _this.$router.push({path: '/login'});

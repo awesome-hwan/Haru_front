@@ -14,6 +14,7 @@
               <img :src="image"  class="prevImg" >
               <button @click="removeImage" class="pa img-upload-cancel-btn">Remove image</button>
             </div>
+            <progress value="0" max="100" id="uploader">0%</progress>
         </div>
           <!---######################### 텍스트 +감정영역 ###################-->
           <div class="write__textBox">
@@ -69,11 +70,6 @@ export default {
         haruUrl:''
       }
   },
-  mounted(){
-
-
-
-  },
   methods: {
     gotoMain(){
       this.$router.push('/home')
@@ -99,45 +95,57 @@ export default {
       this.image = '';
     },
     postHaru(){
-      // let self = this;
 
-      var _this = this;
-
-       var file= this.haru_diary.image_link;
 
 
 
 
-        //파이어베이스 코드
+      var _this = this;
+
+      var file= this.haru_diary.image_link;
+
+      //progressbar
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
        var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
        var uploadTask = storageRef.put(file);
+       var uploader = document.querySelector('#uploader');
 
-        uploadTask.on('state_changed', function(snapshot){
-          switch(snapshot.state){
-            case firebase.storage.TaskState.PAUSED: // or 'paused'
-              console.log('Upload is paused');
-              break;
-            case firebase.storage.TaskState.RUNNING: // or 'running'
-              console.log('Upload is running');
-              break;
-          }
+        uploadTask.on('state_changed', function progress(snapshot){
+
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ;
+          uploader.value = percentage;
+
+
+          // switch(snapshot.state){
+          //   case firebase.storage.TaskState.PAUSED: // or 'paused'
+          //     console.log('Upload is paused');
+          //     break;
+          //   case firebase.storage.TaskState.RUNNING: // or 'running'
+          //     console.log('Upload is running');
+          //
+          //     break;
+          // }
         },function(error){
             console.error(error.message)
           },function(){
-          this.haruUrl = uploadTask.snapshot.downloadURL;
-          console.log('다운로드 URL',this.haruUrl);
-          console.log('useredit_this: ', this);
-          console.log("_this.", _this);
-          _this.$store.imgURL=this.haruUrl;
-          console.log("_this.img", _this.$store.imgURL);  
+          _this.$store.imgURL = uploadTask.snapshot.downloadURL;
+          console.log("_imageURL", _this.$store.imgURL);
           // this.$store.imgURL=this.haruUrl;
           // console.log('전역에 저장 ', Vue.prototype.$store.imgURL);
+              _this.$router.push('/home')
           });
-          axios.post("https://haruphoto-6ad66.firebaseio.com/haru_diary.json",this.haru_diary)
+          axios.post("https://haruphoto-6ad66.firebaseio.com/haru_diary.json",_this.haru_diary)
 
           // axios.post("http://haru-eb.ap-northeast-2.elasticbeanstalk.com/post/",this.haru_diary)
             .then(response => console.log(response))
             .catch(error => console.error(error.message))
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       }
 }
