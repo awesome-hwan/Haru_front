@@ -53,7 +53,7 @@
       </li> -->
 
 
-      <li class="main__contents-item">
+      <!-- <li class="main__contents-item">
         <a class="main__contents-link" href="#">
           <img class="main__contents-item-img" src="../images/1.andreas-p-30199.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Castle in the twilight</h3>
@@ -106,12 +106,21 @@
           <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" />
           <h3 class="main__contents-item-title">Early adopters</h3>
         </a>
+      </li> -->
+
+      <!-- <li v-for="data in this.$store.haruinfo" class="main__contents-item" >
+        <a @click.prevent="Detail(data.id)" class="main__contents-link data. " href="#">
+
+          <img class="main__contents-item-img NewOnes" src='' alt="Some image" />
+          <h3 class="main__contents-item-title"> {{ data.title }} </h3>
+        </a>
       </li>
 
-      <li v-for="data in this.$store.haruinfo" class="main__contents-item" >
-        <a @click.prevernt="Detail" class="main__contents-link" href="#">
-          <!-- <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" /> -->
-          <img class="main__contents-item-img NewOnes" src='' alt="Some image" />
+    </ul> -->
+      <li v-for="data in posts" class="main__contents-item" >
+        <a @click.prevent="Detail(data.id)" class="main__contents-link data. " href="#">
+
+          <img class="main__contents-item-img NewOnes" :src=data.image alt="Some image" />
           <h3 class="main__contents-item-title"> {{ data.title }} </h3>
         </a>
       </li>
@@ -175,77 +184,72 @@ export default {
       posts: [],
       next: null,
       datalist: [],
-      imgURL: this.$store.imgURL
+      imgURL: this.$store.imgURL,
+      BaseData: [],
+      // token: "Token "+ getCookie('Harutoken'),
+      page: ''
     }
   },
 
 methods: {
-  Detail(e) {
-    var NewOnes = document.querySelectorAll('.NewOnes')
-    for ( var i=0, length=NewOnes.length; i < length; i++) {
-      // this.$store.haruinfo[i]
-      console.log('요고클릭함', e.target.parentNode);
-
-
-    }
+  MorePage() {
+    var _this = this
+    _this.page = Number(_this.page )
 
 
 
-    // this.$router.push({path: '/Detail'})
+    const data = new FormData();
+    data.append('author', this.$store.userID);
+    axios.get('/post/', {
+
+      // headers: {
+      //   'Authorization': 'Token ' + this.$store.token
+      //   'Authorization': _this.token
+      // }
+    })
   },
+  Detail(PostId) {
+    var _this = this
+    this.$store.PostId = PostId;
+    axios.get('/post/'+ this.$store.PostId +'/', {
+      // headers: {
+        // 'Authorization': 'Token ' + this.$store.token
+        // 'Authorization': _this.token
+      // }
+    })
+    .then( function ( response) {
+      _this.$store.detailData = response.data;
+      console.log('지금은 이겁니다_this.$store.detailData', _this.$store.detailData)
+    })
+    this.$router.push({path: '/Detail'});
+  },
+
 PageDown() {
   $('.main__header-scroll').addClass('nav-up');
   $('.container').addClass('remove-padding');
 },
-MorePage: function() {
-  axios.get(this.next)
-        .then(result => {
-          //Add data to posts
-          let performList = result.data.results;
-          for(var i=0; i < performList.lenth; i++) {
-            this.posts.push(performList[i]);
-          }
-          this.next = result.data.next;
 
-        })
-        .catch( e => {
-          this.errors.push(e)
-        })
-},
 logout() {
-  // console.log('logout token: ', this.$store.token)
+  var _this = this;
   axios.post('/logout/','', {
-    headers: {
-      'Authorization': 'Token ' + this.$store.token
-    }
-  })
-.then(function (response) {
-  // console.log('응답:',response);
-})
+    headers:
+      {'Authorization': 'Token ' + this.$store.token}
 
+
+  })
 
 this.$router.push({path: '/login'});
 
+    }
 },
-
- // Dedail() {
- //   this.$router.push({path: '/Detail'})}
- // },
+beforeCreate() {
+  var _this = this;
+  _this.$store.token = localStorage.getItem('token');
 
 },
 mounted() {
-  // this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
-  //           .then(function(response) {
-  //             return response.json();
-  //           })
-  //           .then( function(data) {
-  //             this.datalist = Object.values(data);
-  //           })
-  //           .catch(function(error) {
-  //             console.error(error.message)
-  //           });
 
-
+          //Scroll 시 클래스 네임 토글
            $(window).on('scroll', () => {
 
               if( $(window).scrollTop() > 0.2) {
@@ -254,32 +258,55 @@ mounted() {
              }
            });
 
+
+          // localStorage에 있는 Authorization를 불러옴
+          // localStorage.getItem('Authorization')
+
+
           var _this = this
 
            axios.get('/user/', {
-             headers: {
-               'Authorization': 'Token ' + this.$store.token
-             }
+            //  headers: {
+              //  'Authorization': 'Token ' + this.$store.token
+              //  'Authorization': _this.token
+            //  }
            })
          .then(function (response) {
-          //  console.log('User 응답:',response.data.results[0].id);
             // store에 id값 저장하기
+          //  _this.$store.userID = response.data.results[0].id
            _this.$store.userID = response.data.results[0].id
-          //  console.log('_this.$store.userID :', _this.$store.userID )
+
+           localStorage.setItem('userinfo_1', _this.$store.userID)
+           console.log('유저인포', _this.$store.haruinfo)
+           localStorage.getItem('userinfo_1')
 
          })
 
-         console.log("메인_this.$store.haruinfo", this.$store.haruinfo[0].image)
-
          var NewOnes = document.querySelectorAll('.NewOnes')
-        //  var parents = document.querySelectorAll('.main__contents-link')
 
         for ( var i=0, length=NewOnes.length; i < length; i++) {
           NewOnes[i].setAttribute('src', this.$store.haruinfo[i].image);
-          // NewOnes[i].createAttribute('post_id', this.$store.haruinfo[i].id);
+        };
 
 
-        }
+        // 메인화면 로딩시 데이터 불러오는 방법(목록보기)
+        axios.get('/post/', {
+          // headers: {
+            // 'Authorization': 'Token ' + this.$store.token
+            // 'Authorization': _this.token
+          // }
+        })
+
+        .then( function ( response ){
+          //  _this.$store.haruinfo = response.data.results;
+          // _this.posts = _this.$store.haruinfo
+
+          _this.posts = response.data.results;
+          //  _this.posts = response.data.results;
+
+            console.log('목록보기 :', _this.posts)
+
+        })
 
        },
 
@@ -296,20 +323,8 @@ created() {
             .catch(function(error) {
               console.error(error.message)
             });
-
-
-
-
-
- },
- updated() {
-
-
-
-
-
- }
-}
+       }
+    }
 
 </script>
 <style lang="sass" scoped>

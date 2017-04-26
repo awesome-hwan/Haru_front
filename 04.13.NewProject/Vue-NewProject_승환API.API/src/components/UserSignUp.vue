@@ -69,18 +69,7 @@ export default {
          this.user_input.validation = true;
        }
      },
-    //  submitData() {
-    //    console.log("input:",this.user_input)
-    //    console.log(this.$http)
-    //    this.$http.post('http://haru-eb.ap-northeast-2.elasticbeanstalk.com/signup/', this.user_input)
-    //              .then(function(response) {
-    //                console.log("res:",response);
-    //              })
-    //              .catch(function(error) {
-    //                console.log("Err",error.message);
-    //              })
-     //
-    //      },
+  
          submitData() {
            var _this  = this
             // console.log(_this);
@@ -88,7 +77,7 @@ export default {
 
            axios.post('/signup/', userData)
            .then(function (response) {
-             console.log('응답:',response.status)
+            //  console.log('응답:',response.status)
              if ( response.status === 201 ) {
                 alert(_this.user_input.email + '님 회원가입을 축하드립니다.');
 
@@ -103,14 +92,10 @@ export default {
            })
            .catch(function (error) {
 
-            //  에러가 났을때 해당 value 값 초기화 시키기<div className=""></div>
              alert(_this.user_input.email + '은 이미 존재합니다.');
              var email = document.querySelector('#user-id')
-            //  var user_pw = document.querySelector('#user-pw')
-            //  var confirm_userPw = document.querySelector('#confirm-userPw')
+
              email.value = '';
-            //  user_pw.value = '';
-            //  confirm_userPw.value = '';
 
 
              console.log('에러:',error);

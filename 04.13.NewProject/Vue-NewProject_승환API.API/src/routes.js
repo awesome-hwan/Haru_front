@@ -5,12 +5,14 @@ import SignUp from './components/UserSignUp.vue';
 import Detail from './components/User/UserDetail.vue';
 import Edit from './components/User/UserEdit.vue';
 
+
 export const routes = [
   { path: '/login', component: Login},
   { path: '/signup', component: SignUp},
   { path: '/home', component:Home },
   { path: '/Detail', component: Detail},
   { path: '/Edit' ,component: Edit },
+  // { path: '/'+this.$store.userID+'', component: UserId},
   {
     // * === wild card
    path: '*', redirect: '/home'

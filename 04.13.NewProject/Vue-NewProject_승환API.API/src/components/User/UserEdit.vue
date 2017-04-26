@@ -82,9 +82,7 @@ export default {
         return;
       this.createImage(files[0]);
       this.haru_diary.image = e.target.files[0];
-      // this.image = e.target.files[0];
-      console.log( 'this.haru_diary.image :', this.haru_diary.image)
-      // console.log( 'this.haru_diary.image :', this.image)
+
     },
     createImage(file) {
       var image = new Image();
@@ -125,77 +123,10 @@ export default {
       })
       .then( function (response) {
             _this.$store.haruinfo.push(response.data);
-            console.log('_this.$store.haruinfo :',_this.$store.haruinfo)
-
-            function progress(snapshot){
-              var uploader = document.querySelector('#uploader');
-              _this.Show = true
-              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ;
-              uploader.value = percentage;
-
-            }
-            _this.$router.push('/home')
+            // console.log('__필요한 :', response.data.id)
+                _this.$store.PostId = response.data.id;
+            _this.$router.push('/home');
       });
-
-
-      // console.log('이것입니다. this.haru_diary.image', _this.haru_diary)
-      // axios.post("/post/", userData, {
-      // axios.post("/post/", _this.haru_diary, {
-      //
-      //   headers: {
-      //     'Authorization': 'Token ' + this.$store.token
-      //   }
-      //
-      // })
-      //
-      //
-      //   .then(response => console.log(response))
-      //   .catch(error => console.error(error.message))
-
-
-      //
-      // var _this = this;
-      //
-      // var file= this.haru_diary.image;
-
-      //progressbar
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-
-      //  var storageRef =  firebase.storage().ref('haruphoto/'+file.name);
-      //  var uploadTask = storageRef.put(file);
-      //  var uploader = document.querySelector('#uploader');
-        // _this.Show = true
-        // uploadTask.on('state_changed', function progress(snapshot){
-        //
-        //   var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ;
-        //   uploader.value = percentage;
-
-
-          // switch(snapshot.state){
-          //   case firebase.storage.TaskState.PAUSED: // or 'paused'
-          //     console.log('Upload is paused');
-          //     break;
-          //   case firebase.storage.TaskState.RUNNING: // or 'running'
-          //     console.log('Upload is running');
-          //
-          //     break;
-          // }
-        // },function(error){
-        //     console.error(error.message)
-        //   },function(){
-        //   _this.$store.imgURL = uploadTask.snapshot.downloadURL;
-        //   console.log("_imageURL", _this.$store.imgURL);
-          // this.$store.imgURL=this.haruUrl;
-          // console.log('전역에 저장 ', Vue.prototype.$store.imgURL);
-
-
-          // });
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       }
 }

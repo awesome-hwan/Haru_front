@@ -26,7 +26,9 @@ const store = {
   token: '',
   imgURL: '',
   userID: '',
-  haruinfo: []
+  PostId: '',
+  haruinfo: [],
+  detailData: {}
 };
 
 Object.defineProperties(Vue.prototype, {
