@@ -5,22 +5,7 @@
 @import 'main_page-modules', 'main_page-function', 'setting.normalize' ,'main_page-contents', 'main_page-responsive', 'main_page-button-event'
 
 
-// @font-face
-// 	font-family: 'codropsicons'
-// 	font-weight: normal
-// 	font-style: normal
-// 	src: url('../fonts/codropsicons/codropsicons.eot')
-// 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg')
-//
-// body
-// 	// 스크롤을 이벤트를위한  초기 패딩 top
-// 	padding-top: 100vh
-// 	background: #e9ecef
-// 	transition: all 2.5s ease
-// 	// margin: 0
-// body
-// 	margin: 0
-// 	transition 2.5s >> 1s
+
 .container
 	padding-top: 100vh
 	background: #e9ecef
@@ -41,7 +26,7 @@
 		max-width: 100%
 		min-height: 100%
 
-// 스크롤시 클래스 네임 토클되는것, 스크롤시 탑으로 -90% 이동
+// 스크롤시 클래스 네임 토글, 스크롤시 탑으로 -90% 이동
 // ########################## 스크롤 이벤트 본격 시작  ##########################
 .nav-up
   top: -150%
@@ -65,17 +50,8 @@
 	width: 50px
 	height: 50px
 
-
-
-// .fade-leave-active
-// 	animation: fade-out 0.3s
-//
-
 .vertical-active
   animation: vertical 1s infinite alternate
-  // animation-name: vertical
-  // animation-iteration-count: infinite
-  // animation-direction: alternate
 
 @keyframes vertical
   from

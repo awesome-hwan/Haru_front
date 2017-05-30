@@ -186,7 +186,6 @@ export default {
       datalist: [],
       imgURL: this.$store.imgURL,
       BaseData: [],
-      // token: "Token "+ getCookie('Harutoken'),
       page: ''
     }
   },
@@ -224,6 +223,7 @@ methods: {
     this.$router.push({path: '/Detail'});
   },
 
+// jQuery를 이용한 스크롤이벤트시 클래스 부여
 PageDown() {
   $('.main__header-scroll').addClass('nav-up');
   $('.container').addClass('remove-padding');
@@ -234,8 +234,6 @@ logout() {
   axios.post('/logout/','', {
     headers:
       {'Authorization': 'Token ' + this.$store.token}
-
-
   })
 
 this.$router.push({path: '/login'});
@@ -296,37 +294,15 @@ mounted() {
             // 'Authorization': _this.token
           // }
         })
-
         .then( function ( response ){
-          //  _this.$store.haruinfo = response.data.results;
-          // _this.posts = _this.$store.haruinfo
-
           _this.posts = response.data.results;
-          //  _this.posts = response.data.results;
-
             console.log('목록보기 :', _this.posts)
 
         })
-
        }
-
-// created() {
-//
-//
-//   this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
-//             .then(function(response) {
-//               return response.json();
-//             })
-//             .then( function(data) {
-//               this.datalist = Object.values(data);
-//             })
-//             .catch(function(error) {
-//               console.error(error.message)
-//             });
-//        }
     }
 
 </script>
 <style lang="sass" scoped>
-  @import "../Sass_main/main__page-style.sass"
+  @import "../Sass_main/master.sass"
 </style>

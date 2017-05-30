@@ -14,6 +14,8 @@ Vue.use(vScroll)
 
 const EventBus = new Vue();
 
+
+// 컴포넌트간 공유할 수 있게 store 설정
 const store = {
   token: '',
   imgURL: '',
@@ -23,6 +25,7 @@ const store = {
   detailData: {}
 };
 
+// 컴포넌트간 공유할 수 있게 store 설정
 Object.defineProperties(Vue.prototype, {
   $EventBus: {
     get() {
@@ -49,4 +52,5 @@ new Vue({
   render: h => h(App)
 });
 
+// 기본 URL 설정하여 axios 설정시 빼고 사용 할 수 있다.
 axios.defaults.baseURL = 'https://haru.ycsinabro.com';
