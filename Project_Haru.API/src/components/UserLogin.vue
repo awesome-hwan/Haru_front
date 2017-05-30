@@ -10,7 +10,7 @@
           </div>
 
         <form class="login__form" id="login__form"
-              ref="form" method="GET" @submit.prevent="login" enctype="multipart/form-data">
+              ref="form" method="POST" @submit.prevent="login" enctype="multipart/form-data">
           <fieldset class="login__filedset">
             <legend class="login__legend">하루 한장 log in form </legend>
             <label class="login__label-email" for="user-id">이메일</label>
@@ -53,21 +53,46 @@ export default {
       datalist: [],
       resource: {},
       form: ''
+
     }
   },
    methods: {
         login() {
+          var _this = this
 
           var userData = new FormData(this.$refs.form);
 
           axios.post('/login/', userData)
           .then(function (response) {
-            console.log('응답:',response);
+
+            if ( response.status === 200 ) {
+               alert(_this.user_input.email + '님 반갑습니다 ^^');
+
+                _this.$store.token = response.data.key
+
+                  console.log('_this.$store.token :', _this.$store.token)
+
+                localStorage.setItem('token', _this.$store.token)
+
+                // setCookie('Harutoken', _this.$store.token, 90);
+
+
+              axios.defaults.headers.common['Authorization'] =  'Token ' + _this.$store.token;
+
+               _this.$router.push({path: '/home'});
+
+            } else {
+
+               alert('이메일 또는 비밀번호를 다시 확인해주세요');
+
+            }
           })
           .catch(function (error) {
             console.log('에러:',error);
-          });
 
+            alert('이메일 또는 비밀번호를 다시 확인해주세요');
+
+          });
     }
  }
 }

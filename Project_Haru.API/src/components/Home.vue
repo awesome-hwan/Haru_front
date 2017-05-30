@@ -4,7 +4,7 @@
     <div class="main__header-scroll">
       <img class="main__header-scroll-img" src="../images/14.jordan-whitt-54480.jpg" alt="">
       <img @click="PageDown" class="main__header-scroll-arrow vertical-active" src="../images/arrow.svg" alt="아래로 이동하시오">
-      <h1 class="main__header-scroll-main"> 매일 매일이 일년중에 최고의 날임을 <br> 가슴속에 새겨두어라 . </h1>
+      <h1 class="main__header-scroll-main"> 나는 평생 하루도 일을 하지 않았다.<br>그것은 모두 재미있는 놀이였다. <br><br>-토마스 A. 에디슨 </h1>
     </div>
 
     <header class="main__header">
@@ -24,7 +24,8 @@
           <li class="main__header-emotions-fear"><a href="#">쏘쏘</a></li>
           <li class="main__header-emotions-disgust"><a href="#">짜증</a></li>
         </ul>
-        <a href="#" class="main__header-logout split-line-fill">Log out</a>
+        <a href="#" class="main__header-logout split-line-fill" Methods="POST" @click.prevent="logout">Log out</a>
+        <!-- <router-link to="/login" class="main__header-logout split-line-fill" tag="a">Log out</router-link> -->
     </nav>
     </header>
 
@@ -107,10 +108,20 @@
         </a>
       </li>
 
-      <li v-for="data in datalist" class="main__contents-item">
-        <a class="main__contents-link" href="#">
-          <img class="main__contents-item-img" src="../images/19.samuel-zeller-157390.jpg" alt="Some image" />
-          <h3 class="main__contents-item-title"> {{ data.diary_heading }}</h3>
+      <!-- <li v-for="data in this.$store.haruinfo" class="main__contents-item" >
+        <a @click.prevent="Detail(data.id)" class="main__contents-link data. " href="#">
+
+          <img class="main__contents-item-img NewOnes" src='' alt="Some image" />
+          <h3 class="main__contents-item-title"> {{ data.title }} </h3>
+        </a>
+      </li>
+
+    </ul> -->
+      <li v-for="data in posts" class="main__contents-item" >
+        <a @click.prevent="Detail(data.id)" class="main__contents-link data. " href="#">
+
+          <img class="main__contents-item-img NewOnes" :src=data.image alt="Some image" />
+          <h3 class="main__contents-item-title"> {{ data.title }} </h3>
         </a>
       </li>
 
@@ -172,33 +183,73 @@ export default {
     return {
       posts: [],
       next: null,
-      datalist: []
+      datalist: [],
+      imgURL: this.$store.imgURL,
+      BaseData: [],
+      // token: "Token "+ getCookie('Harutoken'),
+      page: ''
     }
   },
 
 methods: {
+  MorePage() {
+    var _this = this
+    _this.page = Number(_this.page )
+
+
+
+    const data = new FormData();
+    data.append('author', this.$store.userID);
+    axios.get('/post/', {
+
+      // headers: {
+      //   'Authorization': 'Token ' + this.$store.token
+      //   'Authorization': _this.token
+      // }
+    })
+  },
+  Detail(PostId) {
+    var _this = this
+    this.$store.PostId = PostId;
+    axios.get('/post/'+ this.$store.PostId +'/', {
+      // headers: {
+        // 'Authorization': 'Token ' + this.$store.token
+        // 'Authorization': _this.token
+      // }
+    })
+    .then( function ( response) {
+      _this.$store.detailData = response.data;
+      console.log('지금은 이겁니다_this.$store.detailData', _this.$store.detailData)
+    })
+    this.$router.push({path: '/Detail'});
+  },
+
 PageDown() {
   $('.main__header-scroll').addClass('nav-up');
   $('.container').addClass('remove-padding');
 },
-MorePage: function() {
-  axios.get(this.next)
-        .then(result => {
-          //Add data to posts
-          let performList = result.data.results;
-          for(var i=0; i < performList.lenth; i++) {
-            this.posts.push(performList[i]);
-          }
-          this.next = result.data.next;
 
-        })
-        .catch( e => {
-          this.errors.push(e)
-        })
-}
+logout() {
+  var _this = this;
+  axios.post('/logout/','', {
+    headers:
+      {'Authorization': 'Token ' + this.$store.token}
+
+
+  })
+
+this.$router.push({path: '/login'});
+
+    }
+},
+beforeCreate() {
+  var _this = this;
+  _this.$store.token = localStorage.getItem('token');
 
 },
 mounted() {
+
+          //Scroll 시 클래스 네임 토글
            $(window).on('scroll', () => {
 
               if( $(window).scrollTop() > 0.2) {
@@ -206,33 +257,74 @@ mounted() {
                $('.container').addClass('remove-padding');
              }
            });
-            // firebase에 저장된 데이터를 mounted때 불러온다.
-          //  this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
-          //            .then(function(response) {
-          //              return response.json();
-          //            })
-          //            .then( function(data) {
-          //              this.datalist = Object.values(data);
-          //            })
-          //            .catch(function(error) {
-          //              console.error(error.message)
-          //            });
 
-       },
-created() {
-  this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
-            .then(function(response) {
-              return response.json();
-            })
-            .then( function(data) {
-              this.datalist = Object.values(data);
-            })
-            .catch(function(error) {
-              console.error(error.message)
-            });
 
-}
-}
+          // localStorage에 있는 Authorization를 불러옴
+          // localStorage.getItem('Authorization')
+
+
+          var _this = this
+
+           axios.get('/user/', {
+            //  headers: {
+              //  'Authorization': 'Token ' + this.$store.token
+              //  'Authorization': _this.token
+            //  }
+           })
+         .then(function (response) {
+            // store에 id값 저장하기
+          //  _this.$store.userID = response.data.results[0].id
+           _this.$store.userID = response.data.results[0].id
+
+           localStorage.setItem('userinfo_1', _this.$store.userID)
+           console.log('유저인포', _this.$store.haruinfo)
+           localStorage.getItem('userinfo_1')
+
+         })
+
+         var NewOnes = document.querySelectorAll('.NewOnes')
+
+        for ( var i=0, length=NewOnes.length; i < length; i++) {
+          NewOnes[i].setAttribute('src', this.$store.haruinfo[i].image);
+        };
+
+
+        // 메인화면 로딩시 데이터 불러오는 방법(목록보기)
+        axios.get('/post/', {
+          // headers: {
+            // 'Authorization': 'Token ' + this.$store.token
+            // 'Authorization': _this.token
+          // }
+        })
+
+        .then( function ( response ){
+          //  _this.$store.haruinfo = response.data.results;
+          // _this.posts = _this.$store.haruinfo
+
+          _this.posts = response.data.results;
+          //  _this.posts = response.data.results;
+
+            console.log('목록보기 :', _this.posts)
+
+        })
+
+       }
+
+// created() {
+//
+//
+//   this.$http.get('https://vue-http-81e7b.firebaseio.com/UserHarulist.json')
+//             .then(function(response) {
+//               return response.json();
+//             })
+//             .then( function(data) {
+//               this.datalist = Object.values(data);
+//             })
+//             .catch(function(error) {
+//               console.error(error.message)
+//             });
+//        }
+    }
 
 </script>
 <style lang="sass" scoped>
