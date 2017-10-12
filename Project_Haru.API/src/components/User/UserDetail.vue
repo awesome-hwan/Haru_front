@@ -71,9 +71,9 @@
               <input value = 4 title="짜증" type="radio" name="status" v-model="haru_diary.status" class="write__emotions-rage"><img src="../../images/emotions/irritation.svg" alt="짜증" width="25" height="25">
               <input value = 5 title="분노" type="radio" name="status" v-model="haru_diary.status" class="write__emotions-angry"><img src="../../images/emotions/angry.svg" alt="분노" width="25" height="25">
             </div>
-            <textarea class="write__haru-text" name="content" v-model="haru_diary.content" :placeholder=this.$store.detailData.content ></textarea>
-
+            <textarea class="write__haru-text" name="content" v-model="haru_diary.content" :placeholder=this.$store.detailData.content></textarea>
           </div>
+
           <button type="submit" name="button" class="wirte__button" @click.prevent="Totalmodifier">수정완료</button>
           <span class="nowtime"></span>
         </form>
@@ -84,6 +84,7 @@
 
   </div>
 </template>
+
 <script>
 export default {
   name: "",
@@ -239,12 +240,13 @@ export default {
       this.view = !true;
     },
     Totalmodifier() {
-      
+
     }
     }
   }
 
 </script>
+
 <style lang="sass" scoped>
   @import "../../Sass_detail/main.sass"
   @import "../../Sass_detail/writePage.sass"

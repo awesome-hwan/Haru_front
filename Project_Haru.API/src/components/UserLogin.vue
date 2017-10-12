@@ -4,13 +4,16 @@
     <div class="modal__box">
       <section class="loginSignup__container">
         <div class="loginSignupBox">
+
           <div class="loginSignupBox__heading">
             <!-- <img src="../../images/harulogo.svg" alt="" class="login__logo"> -->
             <h1 class="loginSignup__heading">하루한장</h1>
+
           </div>
 
         <form class="login__form" id="login__form"
               ref="form" method="POST" @submit.prevent="login" enctype="multipart/form-data">
+
           <fieldset class="login__filedset">
             <legend class="login__legend">하루 한장 log in form </legend>
             <label class="login__label-email" for="user-id">이메일</label>
@@ -21,10 +24,10 @@
             <button class="login__button-facebook">
               <span class="fb__icon"></span>
               <span href="#" class="login__facebook">Facebook으로 로그인</span>
-
             </button>
             <a href="#" class="login__password-find">비밀번호를 잊으셨나요?</a>
           </fieldset>
+
         </form>
 
           <div class="newuser__box">
@@ -44,7 +47,7 @@
 export default {
   data() {
     return {
-
+    // 로그인정보
       user_input: {
         email: '',
         password: ''
@@ -58,33 +61,24 @@ export default {
   },
    methods: {
         login() {
+          //axios의 this는 data를 가르키지 않기 때문에 설정을 초기에 함
           var _this = this
-
           var userData = new FormData(this.$refs.form);
 
           axios.post('/login/', userData)
           .then(function (response) {
-
             if ( response.status === 200 ) {
                alert(_this.user_input.email + '님 반갑습니다 ^^');
-
                 _this.$store.token = response.data.key
-
-                  console.log('_this.$store.token :', _this.$store.token)
-
+                  // console.log('_this.$store.token :', _this.$store.token)
                 localStorage.setItem('token', _this.$store.token)
 
-                // setCookie('Harutoken', _this.$store.token, 90);
-
-
+              //토큰값을 따로 설정 하지 않아도 공통적으로 다 들어간다.
               axios.defaults.headers.common['Authorization'] =  'Token ' + _this.$store.token;
 
                _this.$router.push({path: '/home'});
-
             } else {
-
                alert('이메일 또는 비밀번호를 다시 확인해주세요');
-
             }
           })
           .catch(function (error) {

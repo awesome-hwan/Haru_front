@@ -218,7 +218,7 @@ methods: {
     })
     .then( function ( response) {
       _this.$store.detailData = response.data;
-      console.log('지금은 이겁니다_this.$store.detailData', _this.$store.detailData)
+      // console.log('지금은 이겁니다_this.$store.detailData', _this.$store.detailData)
     })
     this.$router.push({path: '/Detail'});
   },

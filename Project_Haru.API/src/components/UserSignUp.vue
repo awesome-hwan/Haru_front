@@ -69,7 +69,7 @@ export default {
          this.user_input.validation = true;
        }
      },
-  
+
          submitData() {
            var _this  = this
             // console.log(_this);
@@ -94,10 +94,7 @@ export default {
 
              alert(_this.user_input.email + '은 이미 존재합니다.');
              var email = document.querySelector('#user-id')
-
              email.value = '';
-
-
              console.log('에러:',error);
            });
 
